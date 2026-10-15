@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#073b75">
+<title>Presbyterian Church of Ghana | Afasiebon–Kwadaso</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7fc;color:#17243a}
+header{background:#073b75;color:white;padding:22px 15px;text-align:center}
+header .cross{font-size:38px}
+header h1{font-size:23px;margin:8px 0}
+header p{margin:6px 0}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;background:#fff;padding:12px;position:sticky;top:0;box-shadow:0 2px 8px #0001;z-index:2}
+nav a{color:#073b75;text-decoration:none;font-weight:bold;padding:8px;font-size:14px}
+.hero{background:linear-gradient(135deg,#073b75,#1477c9);color:white;text-align:center;padding:48px 20px}
+.hero h2{font-size:32px;margin:0 0 14px}
+.hero p{line-height:1.7;max-width:600px;margin:0 auto 20px}
+button,.button{border:0;border-radius:8px;padding:12px 17px;background:#f4c64e;color:#17345a;font-weight:bold;cursor:pointer;margin:4px}
+button:hover{opacity:.9}
+section{padding:28px 16px;max-width:950px;margin:auto}
+h2.section-title{color:#073b75;text-align:center}
+.card{background:white;border-radius:14px;padding:20px;margin:12px 0;box-shadow:0 4px 15px #102f5010}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+input,select,textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ccd6e3;border-radius:8px;font-size:16px}
+.small{font-size:13px;color:#58677b;line-height:1.6}
+footer{background:#073b75;color:white;text-align:center;padding:25px 15px;line-height:1.8}
+.hidden{display:none}
+.verse{font-size:20px;line-height:1.7;text-align:center}
+.pill{display:inline-block;background:#e4efff;color:#073b75;border-radius:30px;padding:7px 12px;margin:4px}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="cross">✝</div>
+<h1>Presbyterian Church of Ghana</h1>
+<p><strong>Afasiebon–Kwadaso Congregation</strong></p>
+<p>Faith • Fellowship • Service</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About Us</a>
+<a href="#bible">Holy Bible</a>
+<a href="#study">Bible Study</a>
+<a href="#chat">Members' Chat</a>
+<a href="#events">Events</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero" id="home">
+<h2>Welcome to God's House</h2>
+<p>Welcome to the online home of the Presbyterian Church of Ghana, Afasiebon–Kwadaso Congregation. May God's Word strengthen your faith and His love unite us.</p>
+<p><em>“The Lord is my shepherd; I shall not want.” — Psalm 23:1 (KJV)</em></p>
+<button onclick="showWelcome()">Enter Our Church Website</button>
+</div>
+
+<section id="welcome" class="hidden">
+<div class="card">
+<h2 class="section-title">Welcome, Friend!</h2>
+<p style="text-align:center">Choose how you would like to continue.</p>
+<button onclick="document.getElementById('account').scrollIntoView({behavior:'smooth'})">Sign In</button>
+<button onclick="document.getElementById('account').scrollIntoView({behavior:'smooth'})">Create Account</button>
+<p class="small">Account registration and secure Google, email, and phone verification will be connected in a later setup step.</p>
+</div>
+</section>
+
+<section id="about">
+<h2 class="section-title">About Our Congregation</h2>
+<div class="card">
+<h3>Our Faith</h3>
+<p>We gather to worship God, grow in the teaching of Jesus Christ, study the Holy Bible, serve our neighbours, and support one another in Christian fellowship.</p>
+<h3>Our Mission</h3>
+<p>To share God's love, teach His Word, encourage prayer, and serve our community with faith and compassion.</p>
+<p class="small">Church history, minister's name, and official mission statement can be added when the congregation provides the confirmed details.</p>
+</div>
+</section>
+
+<section id="bible">
+<h2 class="section-title">📖 The Holy Bible</h2>
+<div class="card">
+<p>Choose your preferred Bible language.</p>
+<select id="language" onchange="changeLanguage()">
+<option value="en">English</option>
+<option value="tw">Asante Twi</option>
+</select>
+<div id="bibleContent">
+<h3>English Bible</h3>
+<p class="verse">“The Lord is my shepherd; I shall not want.”</p>
+<p style="text-align:center"><strong>Psalm 23:1 — King James Version</strong></p>
+</div>
+<p class="small">This is a sample passage. The complete Bible in English and Asante Twi, along with audio recordings, requires authorized Bible text and audio sources.</p>
+</div>
+
+<div class="card">
+<h3>🔊 Audio Bible</h3>
+<p>Select an audio recording when one has been connected.</p>
+<audio id="bibleAudio" controls style="width:100%"></audio>
+<p class="small">Audio is not connected yet. We will add an authorized English and Asante Twi audio source in a later step.</p>
+</div>
+</section>
+
+<section id="study">
+<h2 class="section-title">📚 Bible Study & Quiz</h2>
+<div class="grid">
+<div class="card">
+<h3>Daily Bible Verse</h3>
+<p class="verse">“Be strong and of a good courage.”</p>
+<p style="text-align:center"><strong>Joshua 1:9 (KJV)</strong></p>
+</div>
+<div class="card">
+<h3>Test Your Bible Knowledge</h3>
+<p>Who built the ark?</p>
+<button onclick="checkAnswer('wrong')">Moses</button>
+<button onclick="checkAnswer('right')">Noah</button>
+<button onclick="checkAnswer('wrong')">David</button>
+<p id="quizResult" aria-live="polite"></p>
+</div>
+</div>
+</section>
+
+<section id="chat">
+<h2 class="section-title">💬 Members' Fellowship Chat</h2>
+<div class="card">
+<p>Connect with fellow church members, encourage one another, and discuss Bible lessons.</p>
+<div class="pill">Prayer requests</div>
+<div class="pill">Bible discussions</div>
+<div class="pill">Church fellowship</div>
+<p><strong>Members' message area</strong></p>
+<textarea id="message" placeholder="Write a sample message..." rows="3"></textarea>
+<button onclick="previewMessage()">Preview Message</button>
+<div id="messagePreview" aria-live="polite"></div>
+<p class="small">This is only a local preview. Messages are not sent to other members yet. Secure sign-in, a database, member permissions, and moderation must be configured before real-time chat can work.</p>
+</div>
+</section>
+
+<section id="events">
+<h2 class="section-title">📅 Church News & Activities</h2>
+<div class="card">
+<h3>Worship and Fellowship</h3>
+<p>Check here for worship services, prayer meetings, Bible studies, youth activities, and special church programmes.</p>
+<p class="small">Official dates, times, and announcements will be added when provided by the church.</p>
+</div>
+</section>
+
+<section id="account">
+<h2 class="section-title">🔐 Member Sign In & Registration</h2>
+<div class="card">
+<p>Choose your preferred account method.</p>
+<button onclick="accountNotice('Google')">Continue with Google</button>
+<button onclick="showEmail()">Continue with Email</button>
+<button onclick="showPhone()">Continue with Phone</button>
+
+<div id="emailForm" class="hidden">
+<h3>Email account</h3>
+<input type="email" placeholder="Email address" autocomplete="email">
+<input type="password" placeholder="Password" autocomplete="current-password">
+<p class="small">This form is a design preview. It does not create or authenticate accounts yet.</p>
+</div>
+
+<div id="phoneForm" class="hidden">
+<h3>Phone number</h3>
+<input type="tel" placeholder="Phone number, e.g. +233..." autocomplete="tel">
+<p class="small">SMS verification will work after a secure authentication provider is configured.</p>
+</div>
+<p id="accountNotice" aria-live="polite"></p>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">📞 Contact Our Church</h2>
+<div class="card">
+<p><strong>Presbyterian Church of Ghana</strong></p>
+<p>Afasiebon–Kwadaso Congregation, Ghana.</p>
+<p class="small">The church's official phone number, email address, location details, and minister's name can be added after confirmation.</p>
+</div>
+</section>
+
+<footer>
+<strong>Presbyterian Church of Ghana</strong><br>
+Afasiebon–Kwadaso Congregation<br>
+“Serve the Lord with gladness.” — Psalm 100:2<br>
+Faith • Fellowship • Service
+</footer>
+
+<script>
+function showWelcome(){
+ document.getElementById('welcome').classList.remove('hidden');
+ document.getElementById('welcome').scrollIntoView({behavior:'smooth'});
+}
+function changeLanguage(){
+ const lang=document.getElementById('language').value;
+ const box=document.getElementById('bibleContent');
+ if(lang==='tw'){
+  box.innerHTML='<h3>Asante Twi Bible</h3><p>Yɛreboa mo sɛ mode Asante Twi Bible a wɔama ho kwan bɛka abom wɔ ha.</p><p class="small">Asante Twi Bible nkyerɛase a wɔama ho kwan no bɛhia ansa na yɛatumi de Bible nkyekyɛm nyinaa ahyɛ ha.</p>';
+ }else{
+  box.innerHTML='<h3>English Bible</h3><p class="verse">“The Lord is my shepherd; I shall not want.”</p><p style="text-align:center"><strong>Psalm 23:1 — King James Version</strong></p>';
+ }
+}
+function checkAnswer(answer){
+ document.getElementById('quizResult').textContent=answer==='right'?'Correct! Noah built the ark. Well done!':'Not quite. Try again!';
+}
+function previewMessage(){
+ const message=document.getElementById('message').value.trim();
+ document.getElementById('messagePreview').textContent=message?'Preview: '+message:'Please type a message first.';
+}
+function showEmail(){
+ document.getElementById('emailForm').classList.remove('hidden');
+ document.getElementById('phoneForm').classList.add('hidden');
+ document.getElementById('accountNotice').textContent='Email sign-in needs secure authentication setup.';
+}
+function showPhone(){
+ document.getElementById('phoneForm').classList.remove('hidden');
+ document.getElementById('emailForm').classList.add('hidden');
+ document.getElementById('accountNotice').textContent='Phone sign-in needs SMS verification setup.';
+}
+function accountNotice(provider){
+ document.getElementById('accountNotice').textContent=provider+' sign-in will be enabled after secure authentication is configured.';
+}
+</script>
+
+</body>
+</html>
