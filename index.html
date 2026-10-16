@@ -531,6 +531,442 @@ document.getElementById("chatForm").addEventListener("submit", event => {
   input.value = "";
 });
 </script>
+<!-- AFASIEBON PREACHING POINT SECTION -->
+<section id="afasiebon-programme" class="church-programme">
 
+  <style>
+    .church-programme {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 1200px;
+      color: #172554;
+      background: #ffffff;
+      border-radius: 12px;
+    }
+
+    .church-programme h2,
+    .church-programme h3 {
+      text-align: center;
+      color: #123b70;
+    }
+
+    .church-programme p {
+      text-align: center;
+    }
+
+    .programme-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .programme-table th,
+    .programme-table td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .programme-table th {
+      background: #123b70;
+      color: white;
+    }
+
+    .programme-table tr:nth-child(even) {
+      background: #eef4ff;
+    }
+
+    .programme-scroll {
+      overflow-x: auto;
+    }
+
+    .print-programme {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background: #123b70;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      #afasiebon-programme,
+      #afasiebon-programme * {
+        visibility: visible;
+      }
+
+      #afasiebon-programme {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .print-programme {
+        display: none;
+      }
+
+      .programme-scroll {
+        overflow: visible;
+      }
+
+      .programme-table {
+        font-size: 9px;
+      }
+
+      .programme-table th {
+        background: #ddd !important;
+        color: black !important;
+      }
+
+      .programme-table tr {
+        break-inside: avoid;
+      }
+    }
+  </style>
+
+  <h2>PRESBYTERIAN CHURCH OF GHANA</h2>
+
+  <h3>AFASIEBON PREACHING POINT</h3>
+
+  <p><strong>Sunday Service Programme</strong></p>
+  <p>July to December 2026</p>
+
+  <button class="print-programme"
+          onclick="window.print()">
+    🖨️ Print Programme
+  </button>
+
+  <div class="programme-scroll">
+    <table class="programme-table">
+
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Theme</th>
+          <th>Service Leader</th>
+          <th>Preacher</th>
+          <th>1st Reading</th>
+          <th>2nd Reading</th>
+          <th>3rd Reading</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>5 July</td>
+          <td>Senior Citizens Sunday</td>
+          <td>Emmanuel Addi</td>
+          <td>Cat. Alex Ayim (RTD)</td>
+          <td>Leviticus 19:1 — Esther Boateng</td>
+          <td>Deuteronomy 5:16 — Melody Asare</td>
+          <td>1 Timothy 5:1–2 — John Marfo</td>
+        </tr>
+
+        <tr>
+          <td>12 July</td>
+          <td>The Word That Gives Life</td>
+          <td>Esther Boateng</td>
+          <td>Stephen Abongo</td>
+          <td>Psalm 119:105–112 — Emmanuel Addi</td>
+          <td>Romans 8:1–11 — Joshua Awuku Twerefour</td>
+          <td>Matthew 13:1–9, 18–23 — Dan Marfo</td>
+        </tr>
+
+        <tr>
+          <td>19 July</td>
+          <td>JY Sunday</td>
+          <td>John Marfo</td>
+          <td>Emmanuel Addi</td>
+          <td>Psalm 127:1–5 — JY</td>
+          <td>1 Corinthians 3:4–15 — JY</td>
+          <td>Matthew 7:24–27 — JY</td>
+        </tr>
+
+        <tr>
+          <td>26 July</td>
+          <td>Parents Day: Change of Pulpit to Raise Funds for PCG SHS</td>
+          <td>Stephen Abongo</td>
+          <td>Will Be Assigned</td>
+          <td>1 Samuel 1:24–28 — Christiana Marfo</td>
+          <td>2 Timothy 3:14–15 — Esther Boateng</td>
+          <td>Matthew 18:6–10 — Emmanuel Addi</td>
+        </tr>
+
+        <tr>
+          <td>2 August</td>
+          <td>Wrestling with God and Finding a New Identity</td>
+          <td>Esther Boateng</td>
+          <td>Christiana Marfo</td>
+          <td>Genesis 32:22–31 — Stephen Abongo</td>
+          <td>Romans 9:1–5 — Emmanuel Addi</td>
+          <td>Matthew 14:13–21 — Joshua Awuku Twerefour</td>
+        </tr>
+
+        <tr>
+          <td>9 August</td>
+          <td>Health Sunday: Our Environment and Our Future</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Rev. Joseph Bosomah</td>
+          <td>Genesis 1:26–31 — John Marfo</td>
+          <td>Romans 8:18–23 — Melody Asare</td>
+          <td>Matthew 6:26–30 — Esther Boateng</td>
+        </tr>
+
+        <tr>
+          <td>16 August</td>
+          <td>General Assembly Sunday: Kutunse Fundraising</td>
+          <td>Stephen Abongo</td>
+          <td>Will Be Assigned</td>
+          <td>Genesis 45:1–15 — Esther Boateng</td>
+          <td>Romans 11:1–2, 29–32 — Joshua Awuku Twerefour</td>
+          <td>Matthew 15:10–28 — John Marfo</td>
+        </tr>
+
+        <tr>
+          <td>23 August</td>
+          <td>The Church Built on a Living Confession</td>
+          <td>Emmanuel Addi</td>
+          <td>Cat. Alex Ayim (RTD)</td>
+          <td>Psalm 124:1–8 — Mercy Soyoo</td>
+          <td>Romans 12:1–8 — Grace Ampah</td>
+          <td>Matthew 16:13–20 — Stephen Abongo</td>
+        </tr>
+
+        <tr>
+          <td>30 August</td>
+          <td>The Way of the Cross: From Self to Sacrifice</td>
+          <td>Stephen Abongo</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Exodus 3:1–15 — Emmanuel Addi</td>
+          <td>Romans 12:9–20 — John Marfo</td>
+          <td>Matthew 16:21–28 — Melody Asare</td>
+        </tr>
+
+        <tr>
+          <td>6 September</td>
+          <td>Restoring Community Through Grace and Accountability</td>
+          <td>John Marfo</td>
+          <td>Grace Ampah</td>
+          <td>Exodus 12:1–14 — Esther Boateng</td>
+          <td>Romans 13:8–14 — Stephen Abongo</td>
+          <td>Matthew 18:15–20 — Emmanuel Addi</td>
+        </tr>
+
+        <tr>
+          <td>13 September</td>
+          <td>The Great Commission: A Call to Action</td>
+          <td>Emmanuel Addi</td>
+          <td>Stephen Abongo</td>
+          <td>1 Corinthians 3:11 — Joshua Awuku Twerefour</td>
+          <td>Acts 1:8 — John Marfo</td>
+          <td>Matthew 28:16–20 — Esther Boateng</td>
+        </tr>
+
+        <tr>
+          <td>20 September</td>
+          <td>Flower Service: Nature, Life's Source for All Inhabitants</td>
+          <td>Stephen Abongo</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Genesis 1:26–28 — Melody Asare</td>
+          <td>Romans 8:22–25 — John Marfo</td>
+          <td>Matthew 25:14–30 — Emmanuel Addi</td>
+        </tr>
+
+        <tr>
+          <td>27 September</td>
+          <td>Blue Cross Sunday</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Rev. Dr. Samuel Kofi Agyei</td>
+          <td>Proverbs 3:5–6 — Emmanuel Addi</td>
+          <td>1 Corinthians 3:11 — John Marfo</td>
+          <td>Luke 5:1–11 — Stephen Abongo</td>
+        </tr>
+
+        <tr>
+          <td>4 October</td>
+          <td>Children's Harvest: The Child in Need — Our Responsibility</td>
+          <td>Melody Asare</td>
+          <td>Grace Ampah</td>
+          <td>1 Kings 17:8–16 — Children Service</td>
+          <td>James 1:27; 2:10 — Children Service</td>
+          <td>Luke 16:19–31 — Children Service</td>
+        </tr>
+
+        <tr>
+          <td>11 October</td>
+          <td>Education Sunday</td>
+          <td>Emmanuel Addi</td>
+          <td>Mercy Soyoo</td>
+          <td>Psalm 119:66</td>
+          <td>1 Corinthians 3:11 — John Marfo</td>
+          <td>Matthew 7:24–27</td>
+        </tr>
+
+        <tr>
+          <td>18 October</td>
+          <td>Expanding the Frontiers of Education with the Gospel</td>
+          <td>Stephen Abongo</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Psalm 99:1–9 — Grace Ampah</td>
+          <td>1 Thessalonians 1:1–10 — Emmanuel Addi</td>
+          <td>Matthew 22:15–22 — Melody Asare</td>
+        </tr>
+
+        <tr>
+          <td>25 October</td>
+          <td>Render to God What Is God's</td>
+          <td>Stephen Abongo</td>
+          <td>Will Be Assigned</td>
+          <td>Deuteronomy 6:4–5 — Melody Asare</td>
+          <td>1 Thessalonians 2:1–8 — John Marfo</td>
+          <td>Matthew 22:34–46 — Emmanuel Addi</td>
+        </tr>
+
+        <tr>
+          <td>1 November</td>
+          <td>The Blessed Crowd: Called, Washed, and Witnessing</td>
+          <td>To Be Confirmed</td>
+          <td>To Be Confirmed</td>
+          <td>See official programme</td>
+          <td>See official programme</td>
+          <td>See official programme</td>
+        </tr>
+
+        <tr>
+          <td>8 November</td>
+          <td>Presbyterian Brigades Sunday</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Rev. Ashi Kashi Lamidzo</td>
+          <td>Deuteronomy 32:7 — Stephen Abongo</td>
+          <td>2 Timothy 1:5–7 — Emmanuel Addi</td>
+          <td>Matthew 5:14–16 — John Marfo</td>
+        </tr>
+
+        <tr>
+          <td>15 November</td>
+          <td>Living Ready for the Lord's Return</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Rev. Joseph Bosomah (RTD)</td>
+          <td>Judges 4:1–7 — Emmanuel Addi</td>
+          <td>1 Thessalonians 5:1–11 — John Marfo</td>
+          <td>Matthew 25:14–30 — Stephen Abongo</td>
+        </tr>
+
+        <tr>
+          <td>22 November</td>
+          <td>The Shepherd Who Judges Justly</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Rev. J. C. Dapaa (RTD)</td>
+          <td>Ezekiel 34:11–24 — John Marfo</td>
+          <td>Ephesians 1:15–23 — Stephen Abongo</td>
+          <td>Matthew 25:31–46 — Emmanuel Addi</td>
+        </tr>
+
+        <tr>
+          <td>29 November</td>
+          <td>Living in the Light of the Coming King</td>
+          <td>John Marfo</td>
+          <td>Cat. Alex Ayim (RTD)</td>
+          <td>Isaiah 2:1–5 — Melody Asare</td>
+          <td>Romans 13:11–14 — Rita Ayensu Ameyaa</td>
+          <td>Matthew 24:36–44 — Christiana Marfo</td>
+        </tr>
+
+        <tr>
+          <td>6 December</td>
+          <td>Prepare the Way of the Lord</td>
+          <td>Emmanuel Addi</td>
+          <td>Rita Ayensu</td>
+          <td>Isaiah 11:1–10, 18–19 — John Marfo</td>
+          <td>Romans 15:4–13 — Stephen Abongo</td>
+          <td>Matthew 3:1–12 — Melody Asare</td>
+        </tr>
+
+        <tr>
+          <td>13 December</td>
+          <td>Rejoice, the Lord Is Near</td>
+          <td>Rita Ayensu</td>
+          <td>John Marfo</td>
+          <td>Psalm 146:5–10</td>
+          <td>James 5:7–10</td>
+          <td>Matthew 11:2–11</td>
+        </tr>
+
+        <tr>
+          <td>20 December</td>
+          <td>Presbyterian Sunday: PCGTV Day — The Fulfilment of God's Promise</td>
+          <td>Emmanuel Addi</td>
+          <td>Stephen Abongo</td>
+          <td>Isaiah 7:10–16 — Rita Ayensu Ameyaa</td>
+          <td>Romans 1:1–7 — John Marfo</td>
+          <td>Matthew 1:18–25 — Stephen Abongo</td>
+        </tr>
+
+        <tr>
+          <td>25 December</td>
+          <td>Christmas Day: Glory to God; Peace to the World</td>
+          <td>Stephen Abongo</td>
+          <td>Cat. Alex Ayim (RTD)</td>
+          <td>Isaiah 9:2–7 — Emmanuel Addi</td>
+          <td>Titus 2:11–14 — John Marfo</td>
+          <td>Luke 2:1–20 — Esther Boateng</td>
+        </tr>
+
+        <tr>
+          <td>26 December</td>
+          <td>St. Stephen's Day</td>
+          <td>Emmanuel Addi</td>
+          <td>Grace Ampah</td>
+          <td>1 Kings 19:1–10 — Esther Boateng</td>
+          <td>Acts 7:54–60 — Dan Marfo</td>
+          <td>Mark 13:9–13 — Joshua Awuku Twerefour</td>
+        </tr>
+
+        <tr>
+          <td>27 December</td>
+          <td>Faithful Love from Generation to Generation</td>
+          <td>Stephen Abongo</td>
+          <td>Cat. Kofi Kwabia</td>
+          <td>Isaiah 63:7–9 — Dan Marfo</td>
+          <td>Hebrews 2:10–18 — Joshua Awuku Twerefour</td>
+          <td>Matthew 2:13–23 — John Marfo</td>
+        </tr>
+
+        <tr>
+          <td>31 December</td>
+          <td>Watch Night: Praise the Lord!</td>
+          <td>Stephen Abongo</td>
+          <td>Will Be Assigned</td>
+          <td>Isaiah 63:7–9 — John Marfo</td>
+          <td>Hebrews 2:10–18 — Dan Marfo</td>
+          <td>Matthew 2:13–23 — Emmanuel Addi</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>Presbyterian Church of Ghana</strong><br>
+    Afasiebon Preaching Point
+  </p>
+
+</section>
+<!-- END AFASIEBON PREACHING POINT SECTION -->
 </body>
 </html>
