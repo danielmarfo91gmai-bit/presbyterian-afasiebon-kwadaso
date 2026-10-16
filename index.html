@@ -4,24 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#073b75">
-
 <title>Presbyterian Church of Ghana | Afasiebon–Kwadaso</title>
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,sans-serif;background:#f3f7fc;color:#182943;line-height:1.6}
 header{background:#073b75;color:white;text-align:center;padding:25px 15px}
-.pcg-logo{width:105px;height:115px;object-fit:contain;display:block;margin:0 auto 12px;background:white;border-radius:12px;padding:5px}
+.pcg-logo{width:105px;height:115px;object-fit:contain;display:block;margin:auto auto 12px;background:white;border-radius:12px;padding:5px}
 header h1{font-size:25px;margin:8px 0}
 nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;background:white;padding:12px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
 nav a{color:#073b75;text-decoration:none;font-weight:bold;padding:9px;font-size:14px}
-nav a:hover{background:#e8f2ff;border-radius:7px}
 .hero{background:linear-gradient(#062b59b8,#062b59d9),url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1400&q=85') center/cover;color:white;text-align:center;padding:75px 18px}
-.hero h2{font-size:36px;line-height:1.2;margin:0 0 15px}
-.hero p{line-height:1.8;max-width:650px;margin:12px auto}
-button,.btn{display:inline-block;background:#e9bb48;color:#172c4a;padding:12px 16px;border:0;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer;margin:5px;font-size:14px}
-button:hover,.btn:hover{filter:brightness(.95)}
+.hero h2{font-size:36px;line-height:1.2}
 section{max-width:1000px;padding:30px 16px;margin:auto}
 .title{text-align:center;color:#073b75;font-size:27px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
@@ -29,72 +23,102 @@ section{max-width:1000px;padding:30px 16px;margin:auto}
 .card img{width:100%;height:190px;object-fit:cover;border-radius:10px}
 .card h3{color:#073b75}
 input,textarea,select{display:block;width:100%;padding:13px;margin:10px 0;border:1px solid #c8d3e2;border-radius:8px;font-size:16px;font-family:inherit}
-textarea{resize:vertical}
-.small{font-size:12px;line-height:1.7;color:#68768a}
-.verse{font-size:21px;text-align:center;line-height:1.7}
-.notice{background:#e8f2ff;padding:14px;border-radius:9px;line-height:1.6}
-footer{background:#073b75;color:white;text-align:center;padding:28px 15px;line-height:1.9}
-
-/* CHURCH CHAT ROOM */
-.church-chat{background:white;border-radius:16px;overflow:hidden;box-shadow:0 5px 24px #073b7518;border:1px solid #dce5f0}
-.chat-heading{display:flex;align-items:center;gap:14px;padding:20px;background:#073b75;color:white}
-.chat-church-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:white;color:#073b75;font-size:30px;flex-shrink:0}
-.chat-heading h3,.chat-heading p{margin:3px 0;color:white}
-.chat-status{font-size:12px;color:#c4f5d5}
-.chat-layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:460px}
-.chat-sidebar{padding:15px;background:#f5f8fc;border-right:1px solid #e1e8f0}
-.chat-sidebar h3{color:#073b75;font-size:15px}
-.room{display:block;width:100%;margin:6px 0;padding:11px 8px;text-align:left;background:transparent;color:#263850;border-radius:8px}
-.room.active{background:#dceaff;color:#073b75}
-.room:hover{background:#e8f0fb}
-.member{display:flex;align-items:center;gap:8px;margin:15px 0;font-size:12px}
-.member strong,.member small{display:block}
-.member small{margin-top:3px;color:#68768a}
-.avatar,.message-avatar{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border-radius:50%;background:#dceaff;color:#073b75;font-weight:bold}
-.avatar.gold{background:#fff0c4;color:#74520a}
-.online-dot{width:9px;height:9px;background:#28a66a;border-radius:50%;margin-left:auto}
-.chat-main{display:flex;flex-direction:column;min-width:0}
-.room-title{padding:15px;border-bottom:1px solid #e5ebf2}
-.room-title strong,.room-title small{display:block}
-.room-title small{margin-top:5px;color:#69788c}
-.chat-messages{padding:16px 12px;flex:1;min-height:300px;max-height:470px;background:#f8faff;overflow-y:auto;overflow-wrap:anywhere}
-.date-divider{text-align:center;color:#7a8797;font-size:11px;margin:4px 0 20px}
-.chat-message{display:flex;gap:8px;margin:16px 0;align-items:flex-start}
-.chat-message.sent{justify-content:flex-end}
-.message-content{max-width:85%;min-width:0}
-.message-content strong{display:block;font-size:12px;color:#52647a;margin-bottom:5px}
-.bubble{background:white;border:1px solid #e1e8f0;padding:11px 13px;border-radius:4px 14px 14px 14px;line-height:1.5;font-size:14px;white-space:pre-wrap}
-.sent .bubble{background:#dceaff;border-color:#dceaff;border-radius:14px 4px 14px 14px}
-.message-content small{display:block;margin-top:5px;font-size:10px;color:#778397}
-.chat-composer{padding:12px;border-top:1px solid #e1e8f0;background:white}
-.chat-composer textarea{resize:vertical;margin-bottom:5px}
-.composer-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.send-button{background:#073b75;color:white}
-.chat-notice{background:#fff6dc;color:#594716;padding:13px;font-size:12px;line-height:1.6}
-.hidden{display:none!important}
-
-@media(max-width:600px){
- .hero h2{font-size:29px}
- .chat-layout{grid-template-columns:1fr}
- .chat-sidebar{border-right:none;border-bottom:1px solid #e1e8f0}
- .chat-sidebar .member{display:inline-flex;margin-right:10px}
- .chat-messages{min-height:300px}
- .chat-heading{padding:15px}
-}
+button,.btn{display:inline-block;background:#e9bb48;color:#172c4a;padding:12px 16px;border:0;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer;margin:5px;font-size:14px}
+button:disabled{opacity:.6;cursor:wait}
+.small{font-size:12px;color:#68768a}
+.verse{font-size:21px;text-align:center}
+.notice{background:#e8f2ff;padding:14px;border-radius:9px;overflow-wrap:anywhere}
+footer{background:#073b75;color:white;text-align:center;padding:28px 15px}
+.hidden,[hidden]{display:none!important}
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(145deg,#073b75,#0c5b9b)}
+.login-card{background:white;border-radius:18px;padding:25px;width:100%;max-width:440px;box-shadow:0 10px 35px #0003;text-align:center}
+.login-card .pcg-logo{margin-bottom:15px}
+.login-card h1{font-size:23px;color:#073b75;line-height:1.3}
+.login-card h2{font-size:19px}
+.login-card button{width:100%;margin:6px 0}
+.login-card .secondary{background:#e8f2ff}
+.login-card .dark{background:#073b75;color:white}
+#authMessage{overflow-wrap:anywhere;margin:12px 0}
+#recaptcha-container{margin:12px auto}
+.chat-room{padding:14px;background:white;border-radius:12px;margin:12px 0}
+.chat-messages{background:#f8faff;padding:12px;min-height:100px;border-radius:8px;overflow-wrap:anywhere}
+@media(max-width:600px){.hero h2{font-size:29px}}
 </style>
 </head>
 
 <body>
 
+<!-- SIGN-IN SCREEN: shown before the main site -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <img class="pcg-logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Presbyterian_Church_of_Ghana_Crest.png"
+      alt="Presbyterian Church of Ghana crest">
+
+    <h1>Presbyterian Church of Ghana</h1>
+    <p><strong>Afasiebon–Kwadaso Congregation</strong></p>
+    <p>Welcome, church family. Please sign in to continue.</p>
+
+    <button id="googleButton" class="dark" type="button">Continue with Google</button>
+
+    <hr>
+
+    <form id="emailForm">
+      <label for="email">Email address</label>
+      <input id="email" type="email" autocomplete="email"
+        placeholder="Enter your email" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password"
+        placeholder="At least 6 characters" minlength="6" required>
+
+      <button id="emailSignIn" class="dark" type="submit">Sign In</button>
+      <button id="emailSignUp" class="secondary" type="button">Create Account</button>
+      <button id="resetPassword" class="secondary" type="button">Forgot Password?</button>
+    </form>
+
+    <hr>
+
+    <h2>Sign in with your phone</h2>
+    <form id="phoneForm">
+      <label for="phone">Phone number with country code</label>
+      <input id="phone" type="tel" autocomplete="tel"
+        placeholder="+233XXXXXXXXX">
+
+      <div id="recaptcha-container"></div>
+      <button id="sendCode" class="dark" type="submit">Send SMS Code</button>
+
+      <div id="verificationArea" hidden>
+        <label for="smsCode">SMS verification code</label>
+        <input id="smsCode" inputmode="numeric" autocomplete="one-time-code"
+          placeholder="Enter the code">
+        <button id="verifyCode" class="dark" type="button">Verify and Sign In</button>
+      </div>
+    </form>
+
+    <p id="authMessage" class="notice" role="status" aria-live="polite">
+      Sign in to enter the church website.
+    </p>
+
+    <p class="small">
+      Apple sign-in can be added after Apple Developer settings are configured.
+    </p>
+  </div>
+</div>
+
+<!-- THE MAIN WEBSITE REMAINS HIDDEN UNTIL FIREBASE CONFIRMS SIGN-IN -->
+<div id="protectedSite" hidden>
+
 <header>
 <img
 src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Presbyterian_Church_of_Ghana_Crest.png"
 alt="Presbyterian Church of Ghana crest"
-class="pcg-logo"
->
+class="pcg-logo">
 <h1>Presbyterian Church of Ghana</h1>
 <p><strong>Afasiebon–Kwadaso Congregation</strong></p>
 <p>Faith • Fellowship • Service</p>
+<p id="signedInAs"></p>
+<button id="signOutButton" type="button">Sign Out</button>
 </header>
 
 <nav>
@@ -104,7 +128,6 @@ class="pcg-logo"
 <a href="#study">Bible Study</a>
 <a href="#chat">Members' Chat</a>
 <a href="#gallery">Gallery</a>
-<a href="#account">Sign In</a>
 <a href="#contact">Contact</a>
 </nav>
 
@@ -113,7 +136,6 @@ class="pcg-logo"
 <p>Welcome to the online home of the Presbyterian Church of Ghana, Afasiebon–Kwadaso Congregation.</p>
 <p><em>"The Lord is my shepherd; I shall not want." — Psalm 23:1</em></p>
 <a class="btn" href="#bible">Read the Bible</a>
-<a class="btn" href="#account">Member Sign In</a>
 </div>
 
 <section id="about">
@@ -129,29 +151,25 @@ class="pcg-logo"
 <section id="bible">
 <h2 class="title">📖 The Holy Bible</h2>
 <div class="grid">
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80" alt="An open Bible">
 <h3>🇬🇧 English Bible</h3>
 <p>Read Bible books, chapters, and verses in English.</p>
 <a class="btn" href="https://www.bible.com/" target="_blank" rel="noopener">Open English Bible</a>
 </div>
-
 <div class="card">
 <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=800&q=80" alt="Bible study">
 <h3>🇬🇭 Asante Twi Bible</h3>
-<p>Read God's Word in Asante Twi using an available authorized Bible resource.</p>
+<p>Read God's Word in Asante Twi.</p>
 <a class="btn" href="https://www.bible.com/languages/twi" target="_blank" rel="noopener">Open Twi Bible</a>
+<a class="btn" href="https://www.bible.com/versions/1631-akna-akuapem-twi-nkwa-as%C9%9Bm" target="_blank" rel="noopener">Akuapem Twi Bible</a>
 </div>
-
 </div>
-
 <div class="card">
 <h3>🔊 Listen to the Audio Bible</h3>
-<p>Listen to Bible recordings when available in your preferred language.</p>
-<a class="btn" href="https://www.bible.com/audio-bible-app" target="_blank" rel="noopener">Listen to Audio Bible</a>
-<a class="btn" href="https://www.bible.com/en-GB/audio-bible-app-versions/1861-asw-new-revised-asante-twi-bible" target="_blank" rel="noopener">Asante Twi Audio Bible</a>
-<p class="small">These links open external Bible resources. This website does not yet contain the entire Bible or host its audio recordings itself.</p>
+<a class="btn" href="https://www.bible.com/audio-bible-app" target="_blank" rel="noopener">Audio Bible</a>
+<a class="btn" href="https://www.bible.com/audio-bible-app-versions/1861-asw-new-revised-asante-twi-bible" target="_blank" rel="noopener">Asante Twi Audio Bible</a>
+<a class="btn" href="https://www.open.bible/bibles/twi-biblica-akuapem-audio-bible" target="_blank" rel="noopener">Akuapem Twi Audio Bible</a>
 </div>
 </section>
 
@@ -163,182 +181,50 @@ class="pcg-logo"
 <p class="verse">"Be strong and of a good courage."</p>
 <p style="text-align:center">Joshua 1:9 (KJV)</p>
 </div>
-
 <div class="card">
 <h3>Test Your Bible Knowledge</h3>
 <p><strong>Who built the ark?</strong></p>
-<button onclick="answer(false)">Moses</button>
-<button onclick="answer(true)">Noah</button>
-<button onclick="answer(false)">David</button>
+<button type="button" onclick="answer(false)">Moses</button>
+<button type="button" onclick="answer(true)">Noah</button>
+<button type="button" onclick="answer(false)">David</button>
 <p id="result" aria-live="polite"></p>
 </div>
 </div>
 </section>
 
-<!-- CHURCH FELLOWSHIP CHAT -->
 <section id="chat">
 <h2 class="title">💬 Members' Fellowship Chat</h2>
-
-<div class="church-chat">
-
-<div class="chat-heading">
-<div class="chat-church-icon">✝</div>
-<div>
-<h3>PCG Afasiebon–Kwadaso</h3>
-<p>Church Members' Community</p>
-<span class="chat-status">● Chat design preview</span>
+<div class="card">
+<p><strong>PCG Afasiebon–Kwadaso</strong></p>
+<p>This is a chat preview. Messages are not shared with other members yet.</p>
+<div id="chatMessages" class="chat-messages" aria-live="polite">
+Welcome to the church fellowship chat.
 </div>
-</div>
-
-<div class="chat-layout">
-
-<aside class="chat-sidebar">
-<h3>💬 Chat Rooms</h3>
-
-<button class="room active" type="button" onclick="selectRoom('General Fellowship',this)">💬 General Fellowship</button>
-<button class="room" type="button" onclick="selectRoom('Prayer Requests',this)">🙏 Prayer Requests</button>
-<button class="room" type="button" onclick="selectRoom('Bible Discussion',this)">📖 Bible Discussion</button>
-<button class="room" type="button" onclick="selectRoom('Announcements',this)">📢 Announcements</button>
-
-<hr>
-
-<h3>👥 Example Members</h3>
-
-<div class="member">
-<span class="avatar">AM</span>
-<div><strong>Member A</strong><small>Example profile</small></div>
-<span class="online-dot"></span>
-</div>
-
-<div class="member">
-<span class="avatar gold">BM</span>
-<div><strong>Member B</strong><small>Example profile</small></div>
-<span class="online-dot"></span>
-</div>
-
-<div class="member">
-<span class="avatar">CM</span>
-<div><strong>Member C</strong><small>Example profile</small></div>
-<span class="online-dot"></span>
-</div>
-
-<p class="small">These are sample profiles, not actual church members.</p>
-</aside>
-
-<div class="chat-main">
-
-<div class="room-title">
-<strong id="roomTitle">💬 General Fellowship</strong>
-<small id="roomDescription">A place to encourage one another in Christ.</small>
-</div>
-
-<div class="chat-messages" id="chatMessages" aria-live="polite">
-
-<div class="date-divider">SAMPLE MESSAGES</div>
-
-<div class="chat-message received">
-<span class="message-avatar">AM</span>
-<div class="message-content">
-<strong>Member A</strong>
-<div class="bubble">Welcome, everyone! May God's grace be with us today. 🙏</div>
-<small>Example message · 9:00 AM</small>
-</div>
-</div>
-
-<div class="chat-message sent">
-<div class="message-content">
-<strong>You · Preview</strong>
-<div class="bubble">Amen! God bless our church family.</div>
-<small>Example message · 9:02 AM</small>
-</div>
-</div>
-
-<div class="chat-message received">
-<span class="message-avatar">BM</span>
-<div class="message-content">
-<strong>Member B</strong>
-<div class="bubble">Let us continue to encourage one another in faith.</div>
-<small>Example message · 9:05 AM</small>
-</div>
-</div>
-
-</div>
-
-<form class="chat-composer" id="chatForm">
-<label for="chatInput"><strong>Write a message</strong></label>
-<textarea id="chatInput" rows="2" maxlength="1000" placeholder="Share an encouraging message..." required></textarea>
-
-<div class="composer-bottom">
-<span class="small">Be kind and respectful ❤️</span>
-<button type="submit" class="send-button">Send ➤</button>
-</div>
+<form id="chatForm">
+<label for="chatInput">Write a message</label>
+<textarea id="chatInput" rows="3" maxlength="1000" required></textarea>
+<button type="submit">Send Preview Message</button>
 </form>
-
-</div>
-</div>
-
-<div class="chat-notice">
-<strong>Important:</strong> This is a working local design preview. Messages you type appear only in your current browser and are not sent to other members. Real private messaging requires secure member sign-in, a database, and access rules.
-</div>
-
 </div>
 </section>
 
 <section id="gallery">
 <h2 class="title">📸 Church Gallery</h2>
-<p style="text-align:center">A place to celebrate worship, fellowship, and God's goodness.</p>
-
 <div class="grid">
 <div class="card">
 <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=800&q=80" alt="Church interior">
-<h3>Worship</h3>
-<p>Gathering together in faith.</p>
+<h3>Worship</h3><p>Gathering together in faith.</p>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="People gathering together">
-<h3>Fellowship</h3>
-<p>Growing together in Christian love.</p>
+<img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="People gathering">
+<h3>Fellowship</h3><p>Growing together in Christian love.</p>
 </div>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=800&q=80" alt="Sunlight shining through trees">
-<h3>Faith & Hope</h3>
-<p>Walking together in God's light.</p>
+<img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=800&q=80" alt="Sunlight through trees">
+<h3>Faith & Hope</h3><p>Walking together in God's light.</p>
 </div>
 </div>
-
-<p class="small">These are illustrative photos, not verified photographs of your congregation. They can be replaced with the church's own photos.</p>
-</section>
-
-<section id="account">
-<h2 class="title">🔐 Member Sign In</h2>
-
-<div class="card">
-<p>Choose your preferred way to sign in or create an account.</p>
-
-<button type="button" onclick="showAccount('Google')">Continue with Google</button>
-<button type="button" onclick="showAccount('Email')">Continue with Email</button>
-<button type="button" onclick="showAccount('Phone')">Continue with Phone</button>
-
-<div id="accountInfo" class="notice" aria-live="polite">
-Secure registration and sign-in will be activated after authentication is configured.
-</div>
-
-<div id="emailFields" hidden>
-<label for="emailAddress">Email address</label>
-<input id="emailAddress" type="email" placeholder="Email address" autocomplete="email">
-<label for="password">Password</label>
-<input id="password" type="password" placeholder="Password" autocomplete="current-password">
-</div>
-
-<div id="phoneFields" hidden>
-<label for="phoneNumber">Phone number</label>
-<input id="phoneNumber" type="tel" placeholder="Phone number, e.g. +233..." autocomplete="tel">
-</div>
-
-<p class="small">These buttons currently show a design preview only. Google authentication, email accounts, and SMS verification must be securely connected before members can sign in.</p>
-</div>
+<p class="small">These are illustrative photos, not verified photographs of your congregation.</p>
 </section>
 
 <section id="contact">
@@ -346,7 +232,7 @@ Secure registration and sign-in will be activated after authentication is config
 <div class="card">
 <h3>Presbyterian Church of Ghana</h3>
 <p>Afasiebon–Kwadaso Congregation, Ghana.</p>
-<p class="small">The church's confirmed address, phone number, email, service schedule, and minister's name can be added when confirmed.</p>
+<p class="small">Confirmed address, phone number, email, service schedule, and minister's name can be added later.</p>
 </div>
 </section>
 
@@ -356,86 +242,205 @@ Afasiebon–Kwadaso Congregation<br>
 "Serve the Lord with gladness." — Psalm 100:2<br>
 Faith • Fellowship • Service
 </footer>
+</div>
 
-<script>
-function answer(correct){
- document.getElementById('result').textContent =
- correct ? 'Correct! Noah built the ark. Well done!' : 'Not quite. Try again!';
-}
+<!-- Firebase Authentication -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  signOut
+} from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
 
-const roomDescriptions = {
- 'General Fellowship':'A place to encourage one another in Christ.',
- 'Prayer Requests':'A preview room for prayer requests and encouragement.',
- 'Bible Discussion':'A preview room for discussing Bible passages.',
- 'Announcements':'A preview room for church news and announcements.'
+const firebaseConfig = {
+  apiKey: "AIzaSyAHaLt4_Ukw8Iniy_Px-AAZm9yVLzysRy4",
+  authDomain: "presbyterian-afasiebon-kwadaso.firebaseapp.com",
+  projectId: "presbyterian-afasiebon-kwadaso",
+  storageBucket: "presbyterian-afasiebon-kwadaso.firebasestorage.app",
+  messagingSenderId: "196956405121",
+  appId: "1:196956405121:web:4dbea09425650b7290fc80"
 };
 
-function selectRoom(room,button){
- document.getElementById('roomTitle').textContent='💬 '+room;
- document.getElementById('roomDescription').textContent=roomDescriptions[room] || '';
- document.querySelectorAll('.room').forEach(function(item){
-  item.classList.remove('active');
- });
- button.classList.add('active');
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const message = document.getElementById("authMessage");
+const loginScreen = document.getElementById("loginScreen");
+const protectedSite = document.getElementById("protectedSite");
 
- const messages=document.getElementById('chatMessages');
- messages.replaceChildren();
+let creatingAccount = false;
+let confirmationResult = null;
+let recaptchaVerifier = null;
 
- const notice=document.createElement('p');
- notice.className='small';
- notice.textContent='You selected '+room+'. This room is a design preview; shared messages are not connected yet.';
- messages.appendChild(notice);
+function showMessage(text) {
+  message.textContent = text;
 }
 
-document.getElementById('chatForm').addEventListener('submit',function(event){
- event.preventDefault();
+function friendlyError(error) {
+  const errors = {
+    "auth/invalid-email": "Please enter a valid email address.",
+    "auth/missing-password": "Please enter your password.",
+    "auth/weak-password": "Use a password with at least 6 characters.",
+    "auth/email-already-in-use": "That email already has an account. Try signing in.",
+    "auth/invalid-credential": "Email or password is incorrect.",
+    "auth/user-not-found": "No account was found. Please create an account.",
+    "auth/popup-closed-by-user": "The Google sign-in window was closed.",
+    "auth/unauthorized-domain": "This website domain is not authorised in Firebase yet.",
+    "auth/operation-not-allowed": "This sign-in method is not enabled in Firebase.",
+    "auth/invalid-phone-number": "Enter your phone number with its country code, for example +233...",
+    "auth/too-many-requests": "Too many attempts. Please wait and try again.",
+    "auth/invalid-verification-code": "That SMS code is incorrect. Please check it and try again."
+  };
+  return errors[error.code] || ("Sign-in error: " + error.message);
+}
 
- const input=document.getElementById('chatInput');
- const text=input.value.trim();
- if(!text)return;
-
- const messages=document.getElementById('chatMessages');
-
- const row=document.createElement('div');
- row.className='chat-message sent';
-
- const content=document.createElement('div');
- content.className='message-content';
-
- const name=document.createElement('strong');
- name.textContent='You · Preview';
-
- const bubble=document.createElement('div');
- bubble.className='bubble';
- bubble.textContent=text;
-
- const time=document.createElement('small');
- time.textContent='Just now · Local preview only';
-
- content.appendChild(name);
- content.appendChild(bubble);
- content.appendChild(time);
- row.appendChild(content);
- messages.appendChild(row);
-
- input.value='';
- messages.scrollTop=messages.scrollHeight;
+onAuthStateChanged(auth, user => {
+  if (user) {
+    loginScreen.hidden = true;
+    protectedSite.hidden = false;
+    document.getElementById("signedInAs").textContent =
+      "Signed in as " + (user.email || user.phoneNumber || user.displayName || "Church member");
+  } else {
+    protectedSite.hidden = true;
+    loginScreen.hidden = false;
+  }
 });
 
-function showAccount(method){
- const info=document.getElementById('accountInfo');
+document.getElementById("emailForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
- document.getElementById('emailFields').hidden=method!=='Email';
- document.getElementById('phoneFields').hidden=method!=='Phone';
+  try {
+    showMessage(creatingAccount ? "Creating your account..." : "Signing in...");
+    if (creatingAccount) {
+      await createUserWithEmailAndPassword(auth, email, password);
+      showMessage("Account created successfully.");
+    } else {
+      await signInWithEmailAndPassword(auth, email, password);
+      showMessage("Signed in successfully.");
+    }
+  } catch (error) {
+    showMessage(friendlyError(error));
+  }
+});
 
- if(method==='Google'){
-  info.textContent='Google sign-in has not been connected yet. Secure authentication setup is required.';
- }else if(method==='Email'){
-  info.textContent='Email sign-in preview. Your details will not be submitted until secure authentication is connected.';
- }else{
-  info.textContent='Phone sign-in preview. SMS verification must be configured before it can be used.';
- }
+document.getElementById("emailSignUp").addEventListener("click", () => {
+  creatingAccount = true;
+  document.getElementById("password").autocomplete = "new-password";
+  document.getElementById("emailSignIn").textContent = "Sign In";
+  showMessage("Enter your email and choose a password, then tap Create Account.");
+  document.getElementById("email").focus();
+});
+
+document.getElementById("emailSignIn").addEventListener("click", () => {
+  creatingAccount = false;
+  document.getElementById("password").autocomplete = "current-password";
+});
+
+document.getElementById("resetPassword").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  if (!email) {
+    showMessage("Enter your email address first, then tap Forgot Password.");
+    return;
+  }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showMessage("If an account exists for that email, a password-reset email has been sent.");
+  } catch (error) {
+    showMessage(friendlyError(error));
+  }
+});
+
+document.getElementById("googleButton").addEventListener("click", async () => {
+  try {
+    showMessage("Opening Google sign-in...");
+    await signInWithPopup(auth, new GoogleAuthProvider());
+  } catch (error) {
+    showMessage(friendlyError(error));
+  }
+});
+
+function getRecaptcha() {
+  if (!recaptchaVerifier) {
+    recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+      size: "normal"
+    });
+  }
+  return recaptchaVerifier;
 }
+
+document.getElementById("phoneForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!phone.startsWith("+") || phone.length < 8) {
+    showMessage("Enter your phone number with country code, such as +233XXXXXXXXX.");
+    return;
+  }
+
+  try {
+    showMessage("Preparing SMS verification. Complete the reCAPTCHA challenge.");
+    const verifier = getRecaptcha();
+    confirmationResult = await signInWithPhoneNumber(auth, phone, verifier);
+    document.getElementById("verificationArea").hidden = false;
+    showMessage("SMS sent. Enter the verification code you received.");
+  } catch (error) {
+    if (recaptchaVerifier) {
+      recaptchaVerifier.clear();
+      recaptchaVerifier = null;
+    }
+    showMessage(friendlyError(error));
+  }
+});
+
+document.getElementById("verifyCode").addEventListener("click", async () => {
+  const code = document.getElementById("smsCode").value.trim();
+  if (!confirmationResult || !code) {
+    showMessage("Request an SMS code and enter it first.");
+    return;
+  }
+  try {
+    showMessage("Verifying your code...");
+    await confirmationResult.confirm(code);
+  } catch (error) {
+    showMessage(friendlyError(error));
+  }
+});
+
+document.getElementById("signOutButton").addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    alert(friendlyError(error));
+  }
+});
+
+// Small interactive Bible quiz.
+window.answer = function(correct) {
+  document.getElementById("result").textContent =
+    correct ? "Correct! Noah built the ark. Well done!" : "Not quite. Try again!";
+};
+
+// Local chat preview only; it does not send messages to other members.
+document.getElementById("chatForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const input = document.getElementById("chatInput");
+  const text = input.value.trim();
+  if (!text) return;
+
+  const line = document.createElement("p");
+  line.textContent = "You: " + text;
+  document.getElementById("chatMessages").appendChild(line);
+  input.value = "";
+});
 </script>
 
 </body>
