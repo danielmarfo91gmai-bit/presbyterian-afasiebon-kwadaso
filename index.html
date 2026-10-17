@@ -7,294 +7,950 @@
 <title>Presbyterian Church of Ghana | Afasiebon–Kwadaso</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f7fc;color:#182943;line-height:1.6}
-header{background:#073b75;color:white;text-align:center;padding:25px 15px}
-.pcg-logo{width:105px;height:115px;object-fit:contain;display:block;margin:auto auto 12px;background:white;border-radius:12px;padding:5px}
-header h1{font-size:25px;margin:8px 0}
-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;background:white;padding:12px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
-nav a{color:#073b75;text-decoration:none;font-weight:bold;padding:9px;font-size:14px}
-.hero{background:linear-gradient(#062b59b8,#062b59d9),url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1400&q=85') center/cover;color:white;text-align:center;padding:75px 18px}
-.hero h2{font-size:36px;line-height:1.2}
-section{max-width:1000px;padding:30px 16px;margin:auto}
-.title{text-align:center;color:#073b75;font-size:27px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:white;padding:20px;border-radius:14px;box-shadow:0 4px 16px #1231;margin:12px 0}
-.card img{width:100%;height:190px;object-fit:cover;border-radius:10px}
-.card h3{color:#073b75}
-input,textarea,select{display:block;width:100%;padding:13px;margin:10px 0;border:1px solid #c8d3e2;border-radius:8px;font-size:16px;font-family:inherit}
-button,.btn{display:inline-block;background:#e9bb48;color:#172c4a;padding:12px 16px;border:0;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer;margin:5px;font-size:14px}
-button:disabled{opacity:.6;cursor:wait}
-.small{font-size:12px;color:#68768a}
-.verse{font-size:21px;text-align:center}
-.notice{background:#e8f2ff;padding:14px;border-radius:9px;overflow-wrap:anywhere}
-footer{background:#073b75;color:white;text-align:center;padding:28px 15px}
-.hidden,[hidden]{display:none!important}
-.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(145deg,#073b75,#0c5b9b)}
-.login-card{background:white;border-radius:18px;padding:25px;width:100%;max-width:440px;box-shadow:0 10px 35px #0003;text-align:center}
-.login-card .pcg-logo{margin-bottom:15px}
-.login-card h1{font-size:23px;color:#073b75;line-height:1.3}
-.login-card h2{font-size:19px}
-.login-card button{width:100%;margin:6px 0}
-.login-card .secondary{background:#e8f2ff}
-.login-card .dark{background:#073b75;color:white}
-#authMessage{overflow-wrap:anywhere;margin:12px 0}
-#recaptcha-container{margin:12px auto}
-.chat-room{padding:14px;background:white;border-radius:12px;margin:12px 0}
-.chat-messages{background:#f8faff;padding:12px;min-height:100px;border-radius:8px;overflow-wrap:anywhere}
-@media(max-width:600px){.hero h2{font-size:29px}}
+:root {
+  --navy: #073b75;
+  --blue: #125da8;
+  --gold: #e9bb48;
+  --ink: #172943;
+  --muted: #62718a;
+  --paper: #f4f7fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: var(--blue);
+}
+
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--gold);
+  color: #182943;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  min-height: 44px;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+button.secondary, .btn.secondary {
+  background: #e8f2ff;
+  color: var(--navy);
+}
+
+button.navy, .btn.navy {
+  background: var(--navy);
+  color: white;
+}
+
+input, textarea, select {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0 14px;
+  border: 1px solid #c8d3e2;
+  border-radius: 9px;
+  font-size: 16px;
+  font-family: inherit;
+  background: white;
+  color: var(--ink);
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.site-header {
+  background: linear-gradient(130deg, #052b58, var(--navy), #1764a8);
+  color: white;
+  text-align: center;
+  padding: 25px 16px;
+}
+
+.pcg-logo {
+  width: 82px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px;
+  background: white;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+.site-header h1 {
+  font-size: clamp(22px, 4vw, 32px);
+  margin: 6px 0;
+}
+
+.site-header p {
+  margin: 4px 0;
+}
+
+nav {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: white;
+  padding: 10px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px #0001;
+}
+
+nav a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 9px 11px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+
+nav a:hover, nav a:focus {
+  background: #e8f2ff;
+}
+
+.hero {
+  background:
+    linear-gradient(100deg, #052b58e8, #073b75c9),
+    url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1600&q=85')
+    center/cover;
+  color: white;
+  text-align: center;
+  padding: clamp(45px, 8vw, 90px) 18px;
+}
+
+.hero h2 {
+  font-size: clamp(29px, 5vw, 46px);
+  line-height: 1.15;
+  margin: 0 auto 14px;
+  max-width: 850px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 12px auto;
+}
+
+.section {
+  max-width: 1120px;
+  padding: 34px 16px;
+  margin: auto;
+  scroll-margin-top: 80px;
+}
+
+.section-title {
+  text-align: center;
+  color: var(--navy);
+  font-size: clamp(24px, 4vw, 32px);
+  margin: 0 0 20px;
+}
+
+.section-intro {
+  text-align: center;
+  color: var(--muted);
+  max-width: 760px;
+  margin: -8px auto 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border: 1px solid #e5ebf3;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px #173b6510;
+  margin: 10px 0;
+  min-width: 0;
+}
+
+.card h3 {
+  color: var(--navy);
+  margin-top: 0;
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+.pill {
+  display: inline-block;
+  background: #e8f2ff;
+  color: var(--navy);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.notice {
+  background: #e8f2ff;
+  border-left: 4px solid var(--blue);
+  padding: 13px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+footer {
+  background: #052b58;
+  color: white;
+  text-align: center;
+  padding: 28px 16px;
+  margin-top: 30px;
+}
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: linear-gradient(145deg, #052b58, #1266a8);
+}
+
+.login-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 15px 45px #0003;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 23px;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.login-card button {
+  width: 100%;
+  margin: 5px 0;
+}
+
+#authMessage {
+  overflow-wrap: anywhere;
+}
+
+.profile-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e8f2ff;
+  border: 4px solid white;
+  box-shadow: 0 2px 12px #0002;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.profile-initials {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #e8f2ff;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0 auto 12px;
+}
+
+.profile-summary {
+  text-align: center;
+}
+
+.profile-summary p {
+  overflow-wrap: anywhere;
+}
+
+.chat-messages {
+  background: #f8faff;
+  padding: 12px;
+  min-height: 90px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.church-programme {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  color: #172554;
+  background: white;
+  border-radius: 12px;
+}
+
+.church-programme h2,
+.church-programme h3 {
+  text-align: center;
+  color: #123b70;
+}
+
+.church-programme p {
+  text-align: center;
+}
+
+.programme-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.programme-table th,
+.programme-table td {
+  border: 1px solid #999;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.programme-table th {
+  background: #123b70;
+  color: white;
+}
+
+.programme-table tr:nth-child(even) {
+  background: #eef4ff;
+}
+
+.programme-scroll {
+  overflow-x: auto;
+}
+
+.print-programme {
+  display: flex;
+  margin: 20px auto;
+  background: #123b70;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  nav {
+    justify-content: flex-start;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 9px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .programme-table {
+    font-size: 12px;
+  }
+
+  .programme-table th,
+  .programme-table td {
+    padding: 7px;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #afasiebon-programme,
+  #afasiebon-programme * {
+    visibility: visible !important;
+  }
+
+  #afasiebon-programme {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-programme {
+    display: none !important;
+  }
+
+  .programme-scroll {
+    overflow: visible;
+  }
+
+  .programme-table {
+    font-size: 9px;
+  }
+
+  .programme-table th {
+    background: #ddd !important;
+    color: #000 !important;
+  }
+
+  .programme-table tr {
+    break-inside: avoid;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <div id="loginScreen" class="login-screen">
-<div class="login-card">
+  <div class="login-card">
+    <img
+      class="pcg-logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Presbyterian_Church_of_Ghana_Crest.png"
+      alt="Presbyterian Church of Ghana crest"
+    >
 
-<img class="pcg-logo"
-src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Presbyterian_Church_of_Ghana_Crest.png"
-alt="Presbyterian Church of Ghana crest">
+    <h1>Presbyterian Church of Ghana</h1>
+    <p><strong>Afasiebon–Kwadaso Congregation</strong></p>
+    <p>Welcome, church family. Please sign in to continue.</p>
 
-<h1>Presbyterian Church of Ghana</h1>
-<p><strong>Afasiebon–Kwadaso Congregation</strong></p>
-<p>Welcome, church family. Please sign in to continue.</p>
+    <button id="googleButton" class="navy" type="button">
+      Continue with Google
+    </button>
 
-<button id="googleButton" class="dark" type="button">Continue with Google</button>
+    <hr>
 
-<hr>
+    <form id="emailForm">
+      <label for="email">Email address</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="email"
+        placeholder="Enter your email"
+        required
+      >
 
-<form id="emailForm">
-<label for="email">Email address</label>
-<input id="email" type="email" autocomplete="email"
-placeholder="Enter your email" required>
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        placeholder="At least 6 characters"
+        minlength="6"
+        required
+      >
 
-<label for="password">Password</label>
-<input id="password" type="password" autocomplete="current-password"
-placeholder="At least 6 characters" minlength="6" required>
+      <button id="emailSignIn" class="navy" type="submit">
+        Sign In
+      </button>
 
-<button id="emailSignIn" class="dark" type="submit">Sign In</button>
-<button id="emailSignUp" class="secondary" type="button">Create Account</button>
-<button id="resetPassword" class="secondary" type="button">Forgot Password?</button>
-</form>
+      <button id="emailSignUp" class="secondary" type="button">
+        Create Account
+      </button>
 
-<hr>
+      <button id="resetPassword" class="secondary" type="button">
+        Forgot Password?
+      </button>
+    </form>
 
-<h2>Sign in with your phone</h2>
+    <hr>
 
-<form id="phoneForm">
-<label for="phone">Phone number with country code</label>
-<input id="phone" type="tel" autocomplete="tel"
-placeholder="+233XXXXXXXXX">
+    <h2>Sign in with your phone</h2>
 
-<div id="recaptcha-container"></div>
-<button id="sendCode" class="dark" type="submit">Send SMS Code</button>
+    <form id="phoneForm">
+      <label for="phone">Phone number with country code</label>
+      <input
+        id="phone"
+        type="tel"
+        autocomplete="tel"
+        placeholder="+233XXXXXXXXX"
+      >
 
-<div id="verificationArea" hidden>
-<label for="smsCode">SMS verification code</label>
-<input id="smsCode" inputmode="numeric" autocomplete="one-time-code"
-placeholder="Enter the code">
-<button id="verifyCode" class="dark" type="button">Verify and Sign In</button>
-</div>
-</form>
+      <div id="recaptcha-container"></div>
 
-<p id="authMessage" class="notice" role="status" aria-live="polite">
-Sign in to enter the church website.
-</p>
+      <button id="sendCode" class="navy" type="submit">
+        Send SMS Code
+      </button>
 
-<p class="small">Apple sign-in can be added after Apple Developer settings are configured.</p>
+      <div id="verificationArea" hidden>
+        <label for="smsCode">SMS verification code</label>
+        <input
+          id="smsCode"
+          inputmode="numeric"
+          autocomplete="one-time-code"
+          placeholder="Enter the code"
+        >
 
-</div>
+        <button id="verifyCode" class="navy" type="button">
+          Verify and Sign In
+        </button>
+      </div>
+    </form>
+
+    <p id="authMessage" class="notice" role="status" aria-live="polite">
+      Sign in to enter the church website.
+    </p>
+
+    <p class="small">
+      If a sign-in method is not configured in Firebase,
+      the church administrator must enable it first.
+    </p>
+  </div>
 </div>
 
 <div id="protectedSite" hidden>
 
-<header>
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Presbyterian_Church_of_Ghana_Crest.png"
-alt="Presbyterian Church of Ghana crest" class="pcg-logo">
-<h1>Presbyterian Church of Ghana</h1>
-<p><strong>Afasiebon–Kwadaso Congregation</strong></p>
-<p>Faith • Fellowship • Service</p>
-<p id="signedInAs"></p>
-<button id="signOutButton" type="button">Sign Out</button>
+<header class="site-header">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Presbyterian_Church_of_Ghana_Crest.png"
+    alt="Presbyterian Church of Ghana crest"
+    class="pcg-logo"
+  >
+
+  <h1>Presbyterian Church of Ghana</h1>
+  <p><strong>Afasiebon–Kwadaso Congregation</strong></p>
+  <p>Faith • Fellowship • Service</p>
+  <p id="signedInAs"></p>
+  <button id="signOutButton" type="button">Sign Out</button>
 </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#bible">Holy Bible</a>
-<a href="#study">Bible Study</a>
-<a href="#chat">Members' Chat</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
-</nav><a href="#afasiebon-programme"
-   class="nav-link">
-  Afasiebon Preaching Point
-</a>
+<nav aria-label="Main navigation">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#bible">Holy Bible</a>
+  <a href="#study">Bible Study</a>
+  <a href="#profile">My Profile</a>
+  <a href="#chat">Members' Chat</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#announcements">Announcements</a>
+  <a href="#sermons">Pastor's Messages</a>
+  <a href="#afasiebon-programme">Afasiebon Preaching Point</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <div class="hero" id="home">
-<h2>Welcome to God's House</h2>
-<p>Welcome to the online home of the Presbyterian Church of Ghana, Afasiebon–Kwadaso Congregation.</p>
-<p><em>"The Lord is my shepherd; I shall not want." — Psalm 23:1</em></p>
-<a class="btn" href="#bible">Read the Bible</a>
+  <span class="pill">WELCOME TO OUR CHURCH FAMILY</span>
+
+  <h2>Growing in Faith. Serving in Love.</h2>
+
+  <p>
+    Welcome to the online home of the Presbyterian Church of Ghana,
+    Afasiebon–Kwadaso Congregation.
+  </p>
+
+  <p>
+    <em>
+      “The Lord is my shepherd; I shall not want.” — Psalm 23:1
+    </em>
+  </p>
+
+  <a class="btn" href="#bible">Read the Bible</a>
+  <a class="btn secondary" href="#profile">My Member Profile</a>
 </div>
 
-<section id="about">
-<h2 class="title">Welcome to Our Congregation</h2>
-<div class="card">
-<p>We come together to worship God, learn from the Holy Bible, share Christ's love, and support one another in faith and fellowship.</p>
-<h3>Our Mission</h3>
-<p>To grow in God's Word, serve our neighbours, and share the love of Jesus Christ.</p>
-<p class="small">The congregation's official history, minister's name, mission statement, and service times can be added when confirmed by the church.</p>
-</div>
+<section id="about" class="section">
+  <h2 class="section-title">About Our Congregation</h2>
+
+  <div class="grid">
+    <article class="card">
+      <h3>Our Fellowship</h3>
+      <p>
+        We gather to worship God, learn from the Holy Bible,
+        share Christ's love, and support one another in faith
+        and fellowship.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Our Mission</h3>
+      <p>
+        To grow in God's Word, serve our neighbours,
+        and share the love of Jesus Christ.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Our Church Information</h3>
+      <p class="small">
+        Official history, minister's name, service times,
+        and confirmed contact details can be added by the church.
+      </p>
+    </article>
+  </div>
 </section>
 
-<section id="bible">
-<h2 class="title">📖 The Holy Bible</h2>
-<div class="grid">
+<section id="profile" class="section">
+  <h2 class="section-title">👤 Member Profile</h2>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=800&q=80" alt="An open Bible">
-<h3>🇬🇧 English Bible</h3>
-<p>Read Bible books, chapters, and verses in English.</p>
-<a class="btn" href="https://www.bible.com/" target="_blank" rel="noopener">Open English Bible</a>
-</div>
+  <p class="section-intro">
+    Add your member details so your account can show
+    your preferred name and church profile.
+  </p>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=800&q=80" alt="Bible study">
-<h3>🇬🇭 Asante Twi Bible</h3>
-<p>Read God's Word in Asante Twi.</p>
-<a class="btn" href="https://www.bible.com/languages/twi" target="_blank" rel="noopener">Open Twi Bible</a>
-<a class="btn" href="https://www.bible.com/versions/1631-akna-akuapem-twi-nkwa-as%C9%9Bm" target="_blank" rel="noopener">Akuapem Twi Bible</a>
-</div>
+  <div class="grid">
+    <div class="card profile-summary">
+      <div id="profileInitials" class="profile-initials">PCG</div>
 
-</div>
+      <img
+        id="profilePhotoPreview"
+        class="profile-photo"
+        alt="Your profile photo"
+        hidden
+      >
 
-<div class="card">
-<h3>🔊 Listen to the Audio Bible</h3>
-<a class="btn" href="https://www.bible.com/audio-bible-app" target="_blank" rel="noopener">Audio Bible</a>
-<a class="btn" href="https://www.bible.com/audio-bible-app-versions/1861-asw-new-revised-asante-twi-bible" target="_blank" rel="noopener">Asante Twi Audio Bible</a>
-<a class="btn" href="https://www.open.bible/bibles/twi-biblica-akuapem-audio-bible" target="_blank" rel="noopener">Akuapem Twi Audio Bible</a>
-</div>
+      <h3 id="profileDisplayName">Church Member</h3>
+      <p id="profileEmail">Your signed-in email will appear here.</p>
+      <p id="profilePhoneSummary"></p>
+      <p id="profileBioSummary">Add a short introduction to your profile.</p>
+
+      <p class="small">
+        Only share information you are comfortable showing to
+        other church members. Profile details require appropriate
+        Firestore security rules.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Edit My Profile</h3>
+
+      <form id="profileForm">
+        <label for="displayName">Full name</label>
+        <input
+          id="displayName"
+          maxlength="80"
+          autocomplete="name"
+          placeholder="Your full name"
+          required
+        >
+
+        <label for="profilePhone">Phone number (optional)</label>
+        <input
+          id="profilePhone"
+          type="tel"
+          maxlength="30"
+          autocomplete="tel"
+          placeholder="+233..."
+        >
+
+        <label for="photoURL">Profile photo link (optional)</label>
+        <input
+          id="photoURL"
+          type="url"
+          placeholder="https://..."
+        >
+
+        <p class="small">
+          Use a direct image link. Photo upload storage is not enabled.
+        </p>
+
+        <label for="bio">Short introduction (optional)</label>
+        <textarea
+          id="bio"
+          rows="3"
+          maxlength="300"
+          placeholder="A few words about yourself"
+        ></textarea>
+
+        <button id="saveProfileButton" class="navy" type="submit">
+          Save My Profile
+        </button>
+
+        <p id="profileMessage" class="notice" role="status" aria-live="polite">
+          Sign in to edit your profile.
+        </p>
+      </form>
+    </div>
+  </div>
+</section><section id="bible" class="section">
+  <div class="card">
+    <h2>📖 Bible Resources</h2>
+    <p>Grow in God's Word through reading, reflection and prayer.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Today's Bible Reading</h3>
+        <p><strong>Psalm 23:1</strong></p>
+        <p>"The LORD is my shepherd; I shall not want."</p>
+      </div>
+
+      <div class="card">
+        <h3>Daily Reflection</h3>
+        <p>Take a moment to reflect on God's goodness and faithfulness.</p>
+        <p>How can you show God's love to someone today?</p>
+      </div>
+
+      <div class="card">
+        <h3>Prayer Corner</h3>
+        <p>Spend time in prayer for your family, church and community.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="study">
-<h2 class="title">📚 Bible Study & Quiz</h2>
-<div class="grid">
+<section id="quiz" class="section">
+  <div class="card">
+    <h2>📝 Bible Quiz</h2>
+    <p>Test your knowledge of the Bible.</p>
 
-<div class="card">
-<h3>Today's Bible Verse</h3>
-<p class="verse">"Be strong and of a good courage."</p>
-<p style="text-align:center">Joshua 1:9 (KJV)</p>
-</div>
+    <form id="bibleQuiz">
+      <p><strong>1. Who built the ark?</strong></p>
+      <label>
+        <input type="radio" name="q1" value="a"> Moses
+      </label><br>
+      <label>
+        <input type="radio" name="q1" value="b"> Noah
+      </label><br>
+      <label>
+        <input type="radio" name="q1" value="c"> David
+      </label>
 
-<div class="card">
-<h3>Test Your Bible Knowledge</h3>
-<p><strong>Who built the ark?</strong></p>
-<button type="button" onclick="answer(false)">Moses</button>
-<button type="button" onclick="answer(true)">Noah</button>
-<button type="button" onclick="answer(false)">David</button>
-<p id="result" aria-live="polite"></p>
-</div>
+      <p><strong>2. Who defeated Goliath?</strong></p>
+      <label>
+        <input type="radio" name="q2" value="a"> David
+      </label><br>
+      <label>
+        <input type="radio" name="q2" value="b"> Solomon
+      </label><br>
+      <label>
+        <input type="radio" name="q2" value="c"> Peter
+      </label>
 
-</div>
+      <p><strong>3. Where was Jesus born?</strong></p>
+      <label>
+        <input type="radio" name="q3" value="a"> Jerusalem
+      </label><br>
+      <label>
+        <input type="radio" name="q3" value="b"> Nazareth
+      </label><br>
+      <label>
+        <input type="radio" name="q3" value="c"> Bethlehem
+      </label>
+
+      <br><br>
+      <button type="submit">Check My Answers</button>
+    </form>
+
+    <p id="quizResult" aria-live="polite"></p>
+  </div>
 </section>
 
-<section id="chat">
-<h2 class="title">💬 Members' Fellowship Chat</h2>
-<div class="card">
-<p><strong>PCG Afasiebon–Kwadaso</strong></p>
-<p>This is a chat preview. Messages are not shared with other members yet.</p>
-<div id="chatMessages" class="chat-messages" aria-live="polite">Welcome to the church fellowship chat.</div>
+<section id="chat" class="section">
+  <div class="card">
+    <h2>💬 Congregation Live Chat</h2>
+    <p>Share encouragement, fellowship and messages with other signed-in members.</p>
 
-<form id="chatForm">
-<label for="chatInput">Write a message</label>
-<textarea id="chatInput" rows="3" maxlength="1000" required></textarea>
-<button type="submit">Send Preview Message</button>
-</form>
-</div>
+    <div class="card">
+      <p><strong>Chat guidelines</strong></p>
+      <p>Please be respectful, kind and considerate. Do not share passwords,
+      financial details or other sensitive personal information.</p>
+    </div>
+
+    <div id="liveChatStatus" role="status" aria-live="polite">
+      Connecting to the congregation chat...
+    </div>
+
+    <div
+      id="liveChatMessages"
+      aria-live="polite"
+      style="height:300px; overflow-y:auto; border:1px solid #ccc;
+      border-radius:10px; padding:12px; margin:15px 0;"
+    >
+      <p>Loading messages...</p>
+    </div>
+
+    <form id="liveChatForm">
+      <label for="liveChatInput">Your message</label>
+
+      <textarea
+        id="liveChatInput"
+        rows="3"
+        maxlength="1000"
+        placeholder="Write a message to the congregation..."
+        required
+      ></textarea>
+
+      <button type="submit" id="liveChatSend">
+        Send Message
+      </button>
+    </form>
+
+    <p style="font-size:13px;">
+      Messages are stored in Firebase and may be visible to authorised
+      chat participants. Avoid posting private information.
+    </p>
+  </div>
 </section>
 
-<section id="gallery">
-<h2 class="title">📸 Church Gallery</h2>
-<div class="grid">
+<section id="gallery" class="section">
+  <div class="card">
+    <h2>📸 Church Gallery</h2>
+    <p>Memories and moments from our congregation.</p>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=800&q=80" alt="Church interior">
-<h3>Worship</h3><p>Gathering together in faith.</p>
-</div>
+    <div class="grid">
+      <div class="card">
+        <h3>Worship</h3>
+        <p>Gathering together to praise and worship God.</p>
+      </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="People gathering">
-<h3>Fellowship</h3><p>Growing together in Christian love.</p>
-</div>
+      <div class="card">
+        <h3>Fellowship</h3>
+        <p>Building Christian friendship and supporting one another.</p>
+      </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=800&q=80" alt="Sunlight through trees">
-<h3>Faith & Hope</h3><p>Walking together in God's light.</p>
-</div>
-
-</div>
-<p class="small">These are illustrative photos, not verified photographs of your congregation.</p>
+      <div class="card">
+        <h3>Community</h3>
+        <p>Serving our neighbours with faith, hope and love.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
-<h2 class="title">📍 Contact Our Congregation</h2>
-<div class="card">
-<h3>Presbyterian Church of Ghana</h3>
-<p>Afasiebon–Kwadaso Congregation, Ghana.</p>
-<p class="small">Confirmed address, phone number, email, service schedule, and minister's name can be added later.</p>
-</div>
+<section id="announcements" class="section">
+  <div class="card">
+    <h2>📢 Church Announcements</h2>
+
+    <div class="card">
+      <h3>Sunday Worship Service</h3>
+      <p>Join the congregation for worship, prayer and God's Word.</p>
+      <p><strong>Time:</strong> Please confirm the current service time with the church.</p>
+    </div>
+
+    <div class="card">
+      <h3>Church Activities</h3>
+      <p>Members should check with church leadership for the latest activities and announcements.</p>
+    </div>
+  </div>
 </section>
 
-<footer>
-<strong>Presbyterian Church of Ghana</strong><br>
-Afasiebon–Kwadaso Congregation<br>
-"Serve the Lord with gladness." — Psalm 100:2<br>
-Faith • Fellowship • Service
-</footer>
+<section id="sermons" class="section">
+  <div class="card">
+    <h2>🎙️ Sermons and Messages</h2>
+    <p>Read, study and reflect on messages shared during worship.</p>
 
-</div>
+    <div class="card">
+      <h3>God's Faithfulness</h3>
+      <p><strong>Scripture:</strong> Lamentations 3:22–23</p>
+      <p>Reflect on God's mercy and faithfulness, which are renewed every morning.</p>
+    </div>
 
-<!-- If Firebase cannot load, show a helpful message -->
-<script>
-window.firebaseModuleStarted = false;
+    <div class="card">
+      <h3>Walking by Faith</h3>
+      <p><strong>Scripture:</strong> 2 Corinthians 5:7</p>
+      <p>Consider how faith guides our daily decisions and our relationship with God.</p>
+    </div>
+  </div>
+</section>
 
-window.addEventListener("error", function() {
-  if (!window.firebaseModuleStarted) {
-    const box = document.getElementById("authMessage");
-    if (box) {
-      box.textContent = "The sign-in code could not load. Check your internet connection, refresh the page, and try again.";
-    }
-  }
-});
+<section id="programme" class="section">
+  <div class="card">
+    <h2>📅 Sunday Service Programme</h2>
+    <p>July–December 2026</p>
+    <p>Please confirm service leaders, preachers and readings with the official church programme before relying on them.</p>
 
-setTimeout(function() {
-  if (!window.firebaseModuleStarted) {
-    const box = document.getElementById("authMessage");
-    if (box) {
-      box.textContent = "Sign-in is taking too long to load. Check your internet connection and refresh this page.";
-    }
-  }
-}, 10000);
-</script>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Theme</th>
+            <th>Service Leader</th>
+            <th>Preacher</th>
+            <th>Bible Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>July–December 2026</td>
+            <td>See the official programme</td>
+            <td>To be confirmed</td>
+            <td>To be confirmed</td>
+            <td>To be confirmed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<!-- Firebase Authentication -->
+    <button type="button" onclick="window.print()">
+      Print Programme
+    </button>
+  </div>
+</section><!-- PART 3: FIREBASE, SIGN-IN, PROFILES AND REAL-TIME CHAT -->
+
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+
 import {
   getAuth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  onAuthStateChanged,
   signOut
-} from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
-window.firebaseModuleStarted = true;
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  limit,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+
+/* YOUR FIREBASE PROJECT */
 
 const firebaseConfig = {
   apiKey: "AIzaSyAHaLt4_Ukw8Iniy_Px-AAZm9yVLzysRy4",
@@ -307,669 +963,390 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-const message = document.getElementById("authMessage");
-const loginScreen = document.getElementById("loginScreen");
-const protectedSite = document.getElementById("protectedSite");
-const emailForm = document.getElementById("emailForm");
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const signInButton = document.getElementById("emailSignIn");
-const signUpButton = document.getElementById("emailSignUp");
 
-let confirmationResult = null;
-let recaptchaVerifier = null;
-let busy = false;
+/* HELPER */
 
-function showMessage(text) {
-  message.textContent = text;
+const byId = id => document.getElementById(id);
+
+function showMessage(id, message) {
+  const element = byId(id);
+  if (element) element.textContent = message;
 }
 
 function friendlyError(error) {
-  const errors = {
+  const messages = {
     "auth/invalid-email": "Please enter a valid email address.",
-    "auth/missing-password": "Please enter your password.",
-    "auth/weak-password": "Your password is too weak. Use at least 6 characters.",
-    "auth/email-already-in-use": "This email already has an account. Please tap Sign In instead.",
-    "auth/invalid-credential": "Email or password is incorrect. Check your details or create an account.",
-    "auth/user-not-found": "No account was found for this email. Please create an account.",
-    "auth/popup-closed-by-user": "The Google sign-in window was closed.",
-    "auth/unauthorized-domain": "This website domain is not authorised in Firebase. Add your GitHub Pages domain in Firebase Authentication settings.",
-    "auth/operation-not-allowed": "This sign-in method is not enabled in Firebase.",
-    "auth/invalid-phone-number": "Enter your phone number with its country code, for example +233XXXXXXXXX.",
-    "auth/too-many-requests": "Too many attempts. Please wait and try again.",
-    "auth/invalid-verification-code": "That SMS code is incorrect. Check it and try again.",
-    "auth/network-request-failed": "Network error. Check your internet connection and try again.",
-    "auth/invalid-api-key": "Firebase API key error. Check the Firebase configuration in the code.",
-    "auth/admin-restricted-operation": "This action is restricted in Firebase. Check your Authentication settings."
+    "auth/invalid-credential": "Email or password is incorrect.",
+    "auth/email-already-in-use": "This email already has an account. Please sign in.",
+    "auth/weak-password": "Please choose a stronger password.",
+    "auth/popup-closed-by-user": "The sign-in window was closed.",
+    "auth/popup-blocked": "Your browser blocked the sign-in window.",
+    "auth/unauthorized-domain": "This website domain is not authorised in Firebase.",
+    "permission-denied": "Firebase access is not configured correctly yet."
   };
 
-  return errors[error.code] || ("Something went wrong: " + (error.message || error.code || "Unknown error"));
+  return messages[error.code] || error.message || "Something went wrong.";
 }
 
-function setBusy(value) {
-  busy = value;
-  signInButton.disabled = value;
-  signUpButton.disabled = value;
-  document.getElementById("googleButton").disabled = value;
+
+/* SHOW THE CORRECT SCREEN */
+
+function showSignedInScreen(user) {
+  if (byId("loginScreen")) byId("loginScreen").hidden = true;
+  if (byId("protectedSite")) byId("protectedSite").hidden = false;
+
+  showMessage(
+    "signedInAs",
+    "Signed in as " + (user.displayName || user.email || user.phoneNumber || "Church member")
+  );
 }
 
-onAuthStateChanged(auth, user => {
-  if (user) {
-    loginScreen.hidden = true;
-    protectedSite.hidden = false;
 
-    document.getElementById("signedInAs").textContent =
-      "Signed in as " + (user.email || user.phoneNumber || user.displayName || "Church member");
-  } else {
-    protectedSite.hidden = true;
-    loginScreen.hidden = false;
-  }
-});
+/* GOOGLE SIGN-IN */
 
-/* SIGN IN: the form now always performs sign-in. */
-emailForm.addEventListener("submit", async event => {
-  event.preventDefault();
+if (byId("googleButton")) {
+  byId("googleButton").addEventListener("click", async () => {
+    showMessage("authMessage", "Opening Google sign-in...");
 
-  if (busy) return;
-
-  if (!emailForm.reportValidity()) return;
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value;
-
-  setBusy(true);
-  showMessage("Signing in...");
-
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    showMessage("Signed in successfully.");
-  } catch (error) {
-    showMessage(friendlyError(error));
-  } finally {
-    setBusy(false);
-  }
-});
-
-/* CREATE ACCOUNT: this button now directly creates the account. */
-signUpButton.addEventListener("click", async () => {
-  if (busy) return;
-
-  if (!emailForm.reportValidity()) return;
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value;
-
-  if (password.length < 6) {
-    showMessage("Please use a password with at least 6 characters.");
-    passwordInput.focus();
-    return;
-  }
-
-  setBusy(true);
-  showMessage("Creating your account. Please wait...");
-
-  try {
-    const result = await createUserWithEmailAndPassword(auth, email, password);
-
-    showMessage("Your account has been created successfully!");
-
-    document.getElementById("signedInAs").textContent =
-      "Signed in as " + (result.user.email || "Church member");
-  } catch (error) {
-    showMessage(friendlyError(error));
-  } finally {
-    setBusy(false);
-  }
-});
-
-document.getElementById("resetPassword").addEventListener("click", async () => {
-  const email = emailInput.value.trim();
-
-  if (!email) {
-    showMessage("Enter your email address first, then tap Forgot Password.");
-    emailInput.focus();
-    return;
-  }
-
-  try {
-    showMessage("Sending password-reset email...");
-    await sendPasswordResetEmail(auth, email);
-    showMessage("If an account exists for this email, a password-reset email has been sent.");
-  } catch (error) {
-    showMessage(friendlyError(error));
-  }
-});
-
-document.getElementById("googleButton").addEventListener("click", async () => {
-  try {
-    showMessage("Opening Google sign-in...");
-    await signInWithPopup(auth, new GoogleAuthProvider());
-  } catch (error) {
-    showMessage(friendlyError(error));
-  }
-});
-
-function getRecaptcha() {
-  if (!recaptchaVerifier) {
-    recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-      size: "normal"
-    });
-  }
-  return recaptchaVerifier;
-}
-
-document.getElementById("phoneForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  const phone = document.getElementById("phone").value.trim();
-
-  if (!phone.startsWith("+") || phone.length < 8) {
-    showMessage("Enter your phone number with country code, such as +233XXXXXXXXX.");
-    return;
-  }
-
-  try {
-    showMessage("Preparing SMS verification. Complete the reCAPTCHA challenge.");
-
-    const verifier = getRecaptcha();
-    confirmationResult = await signInWithPhoneNumber(auth, phone, verifier);
-
-    document.getElementById("verificationArea").hidden = false;
-    showMessage("SMS sent. Enter the verification code you received.");
-  } catch (error) {
-    if (recaptchaVerifier) {
-      recaptchaVerifier.clear();
-      recaptchaVerifier = null;
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      showMessage("authMessage", friendlyError(error));
     }
-    showMessage(friendlyError(error));
+  });
+}
+
+
+/* EMAIL SIGN-IN */
+
+if (byId("emailForm")) {
+  byId("emailForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const email = byId("email").value.trim();
+    const password = byId("password").value;
+
+    showMessage("authMessage", "Signing in...");
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      showMessage("authMessage", friendlyError(error));
+    }
+  });
+}
+
+
+/* CREATE AN ACCOUNT */
+
+if (byId("emailSignUp")) {
+  byId("emailSignUp").addEventListener("click", async () => {
+    const email = byId("email").value.trim();
+    const password = byId("password").value;
+
+    if (!email || !password) {
+      showMessage("authMessage", "Enter your email and password first.");
+      return;
+    }
+
+    if (password.length < 6) {
+      showMessage("authMessage", "Your password must have at least 6 characters.");
+      return;
+    }
+
+    showMessage("authMessage", "Creating your account...");
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      showMessage("authMessage", friendlyError(error));
+    }
+  });
+}
+
+
+/* RESET PASSWORD */
+
+if (byId("resetPassword")) {
+  byId("resetPassword").addEventListener("click", async () => {
+    const email = byId("email").value.trim();
+
+    if (!email) {
+      showMessage("authMessage", "Enter your email address first.");
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      showMessage("authMessage", "Password reset email sent. Check your inbox.");
+    } catch (error) {
+      showMessage("authMessage", friendlyError(error));
+    }
+  });
+}
+
+
+/* SIGN OUT */
+
+if (byId("signOutButton")) {
+  byId("signOutButton").addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      alert(friendlyError(error));
+    }
+  });
+}
+
+
+/* MEMBER PROFILE */
+
+function initials(name) {
+  return (name || "Church Member")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map(word => word.charAt(0).toUpperCase())
+    .join("");
+}
+
+function displayProfile(data, user) {
+  const name = data.displayName || user.displayName || "Church Member";
+
+  showMessage("profileDisplayName", name);
+  showMessage("profileEmail", user.email || user.phoneNumber || "");
+  showMessage("profilePhoneSummary", data.phone || user.phoneNumber || "");
+  showMessage("profileBioSummary", data.bio || "Add a short introduction to your profile.");
+  showMessage("profileInitials", initials(name));
+
+  if (byId("displayName")) byId("displayName").value = data.displayName || user.displayName || "";
+  if (byId("profilePhone")) byId("profilePhone").value = data.phone || "";
+  if (byId("photoURL")) byId("photoURL").value = data.photoURL || "";
+  if (byId("bio")) byId("bio").value = data.bio || "";
+
+  const photo = byId("profilePhotoPreview");
+
+  if (photo) {
+    if (data.photoURL) {
+      photo.src = data.photoURL;
+      photo.hidden = false;
+      if (byId("profileInitials")) byId("profileInitials").hidden = true;
+    } else {
+      photo.hidden = true;
+      if (byId("profileInitials")) byId("profileInitials").hidden = false;
+    }
   }
-});
+}
 
-document.getElementById("verifyCode").addEventListener("click", async () => {
-  const code = document.getElementById("smsCode").value.trim();
+if (byId("profileForm")) {
+  byId("profileForm").addEventListener("submit", async event => {
+    event.preventDefault();
 
-  if (!confirmationResult || !code) {
-    showMessage("Request an SMS code and enter it first.");
+    const user = auth.currentUser;
+    if (!user) {
+      showMessage("profileMessage", "Please sign in first.");
+      return;
+    }
+
+    const displayName = byId("displayName").value.trim();
+    const phone = byId("profilePhone").value.trim();
+    const photoURL = byId("photoURL").value.trim();
+    const bio = byId("bio").value.trim();
+
+    if (!displayName) {
+      showMessage("profileMessage", "Please enter your name.");
+      return;
+    }
+
+    if (photoURL) {
+      try {
+        const parsedURL = new URL(photoURL);
+        if (parsedURL.protocol !== "https:") {
+          showMessage("profileMessage", "Please use a secure HTTPS photo link.");
+          return;
+        }
+      } catch {
+        showMessage("profileMessage", "Please enter a valid photo link.");
+        return;
+      }
+    }
+
+    try {
+      await setDoc(doc(db, "memberProfiles", user.uid), {
+        displayName,
+        phone,
+        photoURL,
+        bio,
+        email: user.email || "",
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+
+      displayProfile({ displayName, phone, photoURL, bio }, user);
+      showMessage("profileMessage", "Your profile has been saved.");
+    } catch (error) {
+      showMessage("profileMessage", friendlyError(error));
+    }
+  });
+}
+
+
+/* REAL-TIME CONGREGATION CHAT */
+
+let stopChatListener = null;
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[character]);
+}
+
+function showChatMessages(messages) {
+  const container = byId("liveChatMessages");
+  if (!container) return;
+
+  if (messages.length === 0) {
+    container.textContent = "No messages yet. Be the first to greet the congregation!";
     return;
   }
 
-  try {
-    showMessage("Verifying your code...");
-    await confirmationResult.confirm(code);
-    showMessage("Phone number verified. You are signed in.");
-  } catch (error) {
-    showMessage(friendlyError(error));
-  }
-});
+  container.innerHTML = messages.map(message => {
+    const name = escapeHTML(message.name || "Church member");
+    const text = escapeHTML(message.text || "");
+    let time = "";
 
-document.getElementById("signOutButton").addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-    showMessage("You have signed out.");
-  } catch (error) {
-    alert(friendlyError(error));
-  }
-});
+    if (message.createdAt && message.createdAt.toDate) {
+      time = message.createdAt.toDate().toLocaleString();
+    }
 
-/* Bible quiz */
+    return `
+      <article style="padding:10px;margin-bottom:10px;background:white;border-radius:9px;border:1px solid #e1e7ef">
+        <strong>${name}</strong>
+        <p style="white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0">${text}</p>
+        <small>${escapeHTML(time)}</small>
+      </article>
+    `;
+  }).join("");
+
+  container.scrollTop = container.scrollHeight;
+}
+
+function startChat() {
+  if (stopChatListener) {
+    stopChatListener();
+    stopChatListener = null;
+  }
+
+  if (!auth.currentUser || !byId("liveChatMessages")) return;
+
+  showMessage("liveChatStatus", "Connecting to live chat...");
+
+  const messagesQuery = query(
+    collection(db, "churchChat"),
+    orderBy("createdAt", "asc"),
+    limit(100)
+  );
+
+  stopChatListener = onSnapshot(messagesQuery, snapshot => {
+    const messages = snapshot.docs.map(item => ({
+      id: item.id,
+      ...item.data()
+    }));
+
+    showChatMessages(messages);
+    showMessage("liveChatStatus", "Connected. New messages appear automatically.");
+  }, error => {
+    showMessage("liveChatStatus", "Chat unavailable: " + friendlyError(error));
+  });
+}
+
+if (byId("liveChatForm")) {
+  byId("liveChatForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const user = auth.currentUser;
+    const input = byId("liveChatInput");
+    const button = byId("liveChatSend");
+    const message = input.value.trim();
+
+    if (!user) {
+      showMessage("liveChatStatus", "Please sign in to send a message.");
+      return;
+    }
+
+    if (!message) return;
+
+    if (message.length > 1000) {
+      showMessage("liveChatStatus", "Messages must be 1,000 characters or fewer.");
+      return;
+    }
+
+    button.disabled = true;
+
+    try {
+      await addDoc(collection(db, "churchChat"), {
+        uid: user.uid,
+        name: user.displayName || user.email || "Church member",
+        text: message,
+        createdAt: serverTimestamp()
+      });
+
+      input.value = "";
+      showMessage("liveChatStatus", "Message sent.");
+    } catch (error) {
+      showMessage("liveChatStatus", "Message not sent: " + friendlyError(error));
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
+
+/* QUIZ SUPPORT */
+
 window.answer = function(correct) {
-  document.getElementById("result").textContent =
-    correct ? "Correct! Noah built the ark. Well done!" : "Not quite. Try again!";
+  showMessage(
+    "result",
+    correct ? "Correct! Noah built the ark. Well done!" : "Not quite. The correct answer is Noah."
+  );
 };
 
-/* Local chat preview only */
-document.getElementById("chatForm").addEventListener("submit", event => {
-  event.preventDefault();
 
-  const input = document.getElementById("chatInput");
-  const text = input.value.trim();
+/* SIGN-IN STATE */
 
-  if (!text) return;
+onAuthStateChanged(auth, async user => {
+  if (user) {
+    showSignedInScreen(user);
 
-  const line = document.createElement("p");
-  line.textContent = "You: " + text;
+    try {
+      const profileRef = doc(db, "memberProfiles", user.uid);
+      const profileSnapshot = await getDoc(profileRef);
 
-  document.getElementById("chatMessages").appendChild(line);
-  input.value = "";
+      displayProfile(profileSnapshot.exists() ? profileSnapshot.data() : {}, user);
+    } catch (error) {
+      showMessage("profileMessage", "Profile database needs setup: " + friendlyError(error));
+    }
+
+    startChat();
+  } else {
+    if (byId("loginScreen")) byId("loginScreen").hidden = false;
+    if (byId("protectedSite")) byId("protectedSite").hidden = true;
+
+    if (stopChatListener) {
+      stopChatListener();
+      stopChatListener = null;
+    }
+
+    showMessage("authMessage", "Please sign in to continue.");
+  }
 });
 </script>
-<!-- AFASIEBON PREACHING POINT SECTION -->
-<section id="afasiebon-programme" class="church-programme">
 
-  <style>
-    .church-programme {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 1200px;
-      color: #172554;
-      background: #ffffff;
-      border-radius: 12px;
-    }
-
-    .church-programme h2,
-    .church-programme h3 {
-      text-align: center;
-      color: #123b70;
-    }
-
-    .church-programme p {
-      text-align: center;
-    }
-
-    .programme-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .programme-table th,
-    .programme-table td {
-      border: 1px solid #999;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .programme-table th {
-      background: #123b70;
-      color: white;
-    }
-
-    .programme-table tr:nth-child(even) {
-      background: #eef4ff;
-    }
-
-    .programme-scroll {
-      overflow-x: auto;
-    }
-
-    .print-programme {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 24px;
-      background: #123b70;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    @media print {
-      body * {
-        visibility: hidden;
-      }
-
-      #afasiebon-programme,
-      #afasiebon-programme * {
-        visibility: visible;
-      }
-
-      #afasiebon-programme {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .print-programme {
-        display: none;
-      }
-
-      .programme-scroll {
-        overflow: visible;
-      }
-
-      .programme-table {
-        font-size: 9px;
-      }
-
-      .programme-table th {
-        background: #ddd !important;
-        color: black !important;
-      }
-
-      .programme-table tr {
-        break-inside: avoid;
-      }
-    }
-  </style>
-
-  <h2>PRESBYTERIAN CHURCH OF GHANA</h2>
-
-  <h3>AFASIEBON PREACHING POINT</h3>
-
-  <p><strong>Sunday Service Programme</strong></p>
-  <p>July to December 2026</p>
-
-  <button class="print-programme"
-          onclick="window.print()">
-    🖨️ Print Programme
-  </button>
-
-  <div class="programme-scroll">
-    <table class="programme-table">
-
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Theme</th>
-          <th>Service Leader</th>
-          <th>Preacher</th>
-          <th>1st Reading</th>
-          <th>2nd Reading</th>
-          <th>3rd Reading</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr>
-          <td>5 July</td>
-          <td>Senior Citizens Sunday</td>
-          <td>Emmanuel Addi</td>
-          <td>Cat. Alex Ayim (RTD)</td>
-          <td>Leviticus 19:1 — Esther Boateng</td>
-          <td>Deuteronomy 5:16 — Melody Asare</td>
-          <td>1 Timothy 5:1–2 — John Marfo</td>
-        </tr>
-
-        <tr>
-          <td>12 July</td>
-          <td>The Word That Gives Life</td>
-          <td>Esther Boateng</td>
-          <td>Stephen Abongo</td>
-          <td>Psalm 119:105–112 — Emmanuel Addi</td>
-          <td>Romans 8:1–11 — Joshua Awuku Twerefour</td>
-          <td>Matthew 13:1–9, 18–23 — Dan Marfo</td>
-        </tr>
-
-        <tr>
-          <td>19 July</td>
-          <td>JY Sunday</td>
-          <td>John Marfo</td>
-          <td>Emmanuel Addi</td>
-          <td>Psalm 127:1–5 — JY</td>
-          <td>1 Corinthians 3:4–15 — JY</td>
-          <td>Matthew 7:24–27 — JY</td>
-        </tr>
-
-        <tr>
-          <td>26 July</td>
-          <td>Parents Day: Change of Pulpit to Raise Funds for PCG SHS</td>
-          <td>Stephen Abongo</td>
-          <td>Will Be Assigned</td>
-          <td>1 Samuel 1:24–28 — Christiana Marfo</td>
-          <td>2 Timothy 3:14–15 — Esther Boateng</td>
-          <td>Matthew 18:6–10 — Emmanuel Addi</td>
-        </tr>
-
-        <tr>
-          <td>2 August</td>
-          <td>Wrestling with God and Finding a New Identity</td>
-          <td>Esther Boateng</td>
-          <td>Christiana Marfo</td>
-          <td>Genesis 32:22–31 — Stephen Abongo</td>
-          <td>Romans 9:1–5 — Emmanuel Addi</td>
-          <td>Matthew 14:13–21 — Joshua Awuku Twerefour</td>
-        </tr>
-
-        <tr>
-          <td>9 August</td>
-          <td>Health Sunday: Our Environment and Our Future</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Rev. Joseph Bosomah</td>
-          <td>Genesis 1:26–31 — John Marfo</td>
-          <td>Romans 8:18–23 — Melody Asare</td>
-          <td>Matthew 6:26–30 — Esther Boateng</td>
-        </tr>
-
-        <tr>
-          <td>16 August</td>
-          <td>General Assembly Sunday: Kutunse Fundraising</td>
-          <td>Stephen Abongo</td>
-          <td>Will Be Assigned</td>
-          <td>Genesis 45:1–15 — Esther Boateng</td>
-          <td>Romans 11:1–2, 29–32 — Joshua Awuku Twerefour</td>
-          <td>Matthew 15:10–28 — John Marfo</td>
-        </tr>
-
-        <tr>
-          <td>23 August</td>
-          <td>The Church Built on a Living Confession</td>
-          <td>Emmanuel Addi</td>
-          <td>Cat. Alex Ayim (RTD)</td>
-          <td>Psalm 124:1–8 — Mercy Soyoo</td>
-          <td>Romans 12:1–8 — Grace Ampah</td>
-          <td>Matthew 16:13–20 — Stephen Abongo</td>
-        </tr>
-
-        <tr>
-          <td>30 August</td>
-          <td>The Way of the Cross: From Self to Sacrifice</td>
-          <td>Stephen Abongo</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Exodus 3:1–15 — Emmanuel Addi</td>
-          <td>Romans 12:9–20 — John Marfo</td>
-          <td>Matthew 16:21–28 — Melody Asare</td>
-        </tr>
-
-        <tr>
-          <td>6 September</td>
-          <td>Restoring Community Through Grace and Accountability</td>
-          <td>John Marfo</td>
-          <td>Grace Ampah</td>
-          <td>Exodus 12:1–14 — Esther Boateng</td>
-          <td>Romans 13:8–14 — Stephen Abongo</td>
-          <td>Matthew 18:15–20 — Emmanuel Addi</td>
-        </tr>
-
-        <tr>
-          <td>13 September</td>
-          <td>The Great Commission: A Call to Action</td>
-          <td>Emmanuel Addi</td>
-          <td>Stephen Abongo</td>
-          <td>1 Corinthians 3:11 — Joshua Awuku Twerefour</td>
-          <td>Acts 1:8 — John Marfo</td>
-          <td>Matthew 28:16–20 — Esther Boateng</td>
-        </tr>
-
-        <tr>
-          <td>20 September</td>
-          <td>Flower Service: Nature, Life's Source for All Inhabitants</td>
-          <td>Stephen Abongo</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Genesis 1:26–28 — Melody Asare</td>
-          <td>Romans 8:22–25 — John Marfo</td>
-          <td>Matthew 25:14–30 — Emmanuel Addi</td>
-        </tr>
-
-        <tr>
-          <td>27 September</td>
-          <td>Blue Cross Sunday</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Rev. Dr. Samuel Kofi Agyei</td>
-          <td>Proverbs 3:5–6 — Emmanuel Addi</td>
-          <td>1 Corinthians 3:11 — John Marfo</td>
-          <td>Luke 5:1–11 — Stephen Abongo</td>
-        </tr>
-
-        <tr>
-          <td>4 October</td>
-          <td>Children's Harvest: The Child in Need — Our Responsibility</td>
-          <td>Melody Asare</td>
-          <td>Grace Ampah</td>
-          <td>1 Kings 17:8–16 — Children Service</td>
-          <td>James 1:27; 2:10 — Children Service</td>
-          <td>Luke 16:19–31 — Children Service</td>
-        </tr>
-
-        <tr>
-          <td>11 October</td>
-          <td>Education Sunday</td>
-          <td>Emmanuel Addi</td>
-          <td>Mercy Soyoo</td>
-          <td>Psalm 119:66</td>
-          <td>1 Corinthians 3:11 — John Marfo</td>
-          <td>Matthew 7:24–27</td>
-        </tr>
-
-        <tr>
-          <td>18 October</td>
-          <td>Expanding the Frontiers of Education with the Gospel</td>
-          <td>Stephen Abongo</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Psalm 99:1–9 — Grace Ampah</td>
-          <td>1 Thessalonians 1:1–10 — Emmanuel Addi</td>
-          <td>Matthew 22:15–22 — Melody Asare</td>
-        </tr>
-
-        <tr>
-          <td>25 October</td>
-          <td>Render to God What Is God's</td>
-          <td>Stephen Abongo</td>
-          <td>Will Be Assigned</td>
-          <td>Deuteronomy 6:4–5 — Melody Asare</td>
-          <td>1 Thessalonians 2:1–8 — John Marfo</td>
-          <td>Matthew 22:34–46 — Emmanuel Addi</td>
-        </tr>
-
-        <tr>
-          <td>1 November</td>
-          <td>The Blessed Crowd: Called, Washed, and Witnessing</td>
-          <td>To Be Confirmed</td>
-          <td>To Be Confirmed</td>
-          <td>See official programme</td>
-          <td>See official programme</td>
-          <td>See official programme</td>
-        </tr>
-
-        <tr>
-          <td>8 November</td>
-          <td>Presbyterian Brigades Sunday</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Rev. Ashi Kashi Lamidzo</td>
-          <td>Deuteronomy 32:7 — Stephen Abongo</td>
-          <td>2 Timothy 1:5–7 — Emmanuel Addi</td>
-          <td>Matthew 5:14–16 — John Marfo</td>
-        </tr>
-
-        <tr>
-          <td>15 November</td>
-          <td>Living Ready for the Lord's Return</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Rev. Joseph Bosomah (RTD)</td>
-          <td>Judges 4:1–7 — Emmanuel Addi</td>
-          <td>1 Thessalonians 5:1–11 — John Marfo</td>
-          <td>Matthew 25:14–30 — Stephen Abongo</td>
-        </tr>
-
-        <tr>
-          <td>22 November</td>
-          <td>The Shepherd Who Judges Justly</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Rev. J. C. Dapaa (RTD)</td>
-          <td>Ezekiel 34:11–24 — John Marfo</td>
-          <td>Ephesians 1:15–23 — Stephen Abongo</td>
-          <td>Matthew 25:31–46 — Emmanuel Addi</td>
-        </tr>
-
-        <tr>
-          <td>29 November</td>
-          <td>Living in the Light of the Coming King</td>
-          <td>John Marfo</td>
-          <td>Cat. Alex Ayim (RTD)</td>
-          <td>Isaiah 2:1–5 — Melody Asare</td>
-          <td>Romans 13:11–14 — Rita Ayensu Ameyaa</td>
-          <td>Matthew 24:36–44 — Christiana Marfo</td>
-        </tr>
-
-        <tr>
-          <td>6 December</td>
-          <td>Prepare the Way of the Lord</td>
-          <td>Emmanuel Addi</td>
-          <td>Rita Ayensu</td>
-          <td>Isaiah 11:1–10, 18–19 — John Marfo</td>
-          <td>Romans 15:4–13 — Stephen Abongo</td>
-          <td>Matthew 3:1–12 — Melody Asare</td>
-        </tr>
-
-        <tr>
-          <td>13 December</td>
-          <td>Rejoice, the Lord Is Near</td>
-          <td>Rita Ayensu</td>
-          <td>John Marfo</td>
-          <td>Psalm 146:5–10</td>
-          <td>James 5:7–10</td>
-          <td>Matthew 11:2–11</td>
-        </tr>
-
-        <tr>
-          <td>20 December</td>
-          <td>Presbyterian Sunday: PCGTV Day — The Fulfilment of God's Promise</td>
-          <td>Emmanuel Addi</td>
-          <td>Stephen Abongo</td>
-          <td>Isaiah 7:10–16 — Rita Ayensu Ameyaa</td>
-          <td>Romans 1:1–7 — John Marfo</td>
-          <td>Matthew 1:18–25 — Stephen Abongo</td>
-        </tr>
-
-        <tr>
-          <td>25 December</td>
-          <td>Christmas Day: Glory to God; Peace to the World</td>
-          <td>Stephen Abongo</td>
-          <td>Cat. Alex Ayim (RTD)</td>
-          <td>Isaiah 9:2–7 — Emmanuel Addi</td>
-          <td>Titus 2:11–14 — John Marfo</td>
-          <td>Luke 2:1–20 — Esther Boateng</td>
-        </tr>
-
-        <tr>
-          <td>26 December</td>
-          <td>St. Stephen's Day</td>
-          <td>Emmanuel Addi</td>
-          <td>Grace Ampah</td>
-          <td>1 Kings 19:1–10 — Esther Boateng</td>
-          <td>Acts 7:54–60 — Dan Marfo</td>
-          <td>Mark 13:9–13 — Joshua Awuku Twerefour</td>
-        </tr>
-
-        <tr>
-          <td>27 December</td>
-          <td>Faithful Love from Generation to Generation</td>
-          <td>Stephen Abongo</td>
-          <td>Cat. Kofi Kwabia</td>
-          <td>Isaiah 63:7–9 — Dan Marfo</td>
-          <td>Hebrews 2:10–18 — Joshua Awuku Twerefour</td>
-          <td>Matthew 2:13–23 — John Marfo</td>
-        </tr>
-
-        <tr>
-          <td>31 December</td>
-          <td>Watch Night: Praise the Lord!</td>
-          <td>Stephen Abongo</td>
-          <td>Will Be Assigned</td>
-          <td>Isaiah 63:7–9 — John Marfo</td>
-          <td>Hebrews 2:10–18 — Dan Marfo</td>
-          <td>Matthew 2:13–23 — Emmanuel Addi</td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-
-  <p>
-    <strong>Presbyterian Church of Ghana</strong><br>
-    Afasiebon Preaching Point
-  </p>
-
-</section>
-<!-- END AFASIEBON PREACHING POINT SECTION -->
 </body>
 </html>
