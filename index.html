@@ -707,28 +707,134 @@ footer {
     </div>
   </div>
 </section><section id="bible" class="section">
+  <h2 class="section-title">📖 The Holy Bible</h2>
+
+  <p class="section-intro">
+    Read God's Word, explore Bible chapters, and grow in faith every day.
+  </p>
+
   <div class="card">
-    <h2>📖 Bible Resources</h2>
-    <p>Grow in God's Word through reading, reflection and prayer.</p>
+    <h3>📚 Read the Complete Holy Bible</h3>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Today's Bible Reading</h3>
-        <p><strong>Psalm 23:1</strong></p>
-        <p>"The LORD is my shepherd; I shall not want."</p>
-      </div>
+    <p>
+      Choose any book and chapter to read the Bible.
+      The King James Version is used for these readings.
+    </p>
 
-      <div class="card">
-        <h3>Daily Reflection</h3>
-        <p>Take a moment to reflect on God's goodness and faithfulness.</p>
-        <p>How can you show God's love to someone today?</p>
-      </div>
+    <label for="bibleBook">Choose a Bible book</label>
+    <select id="bibleBook">
+      <option value="Genesis">Genesis</option>
+      <option value="Exodus">Exodus</option>
+      <option value="Leviticus">Leviticus</option>
+      <option value="Numbers">Numbers</option>
+      <option value="Deuteronomy">Deuteronomy</option>
+      <option value="Joshua">Joshua</option>
+      <option value="Judges">Judges</option>
+      <option value="Ruth">Ruth</option>
+      <option value="1 Samuel">1 Samuel</option>
+      <option value="2 Samuel">2 Samuel</option>
+      <option value="1 Kings">1 Kings</option>
+      <option value="2 Kings">2 Kings</option>
+      <option value="1 Chronicles">1 Chronicles</option>
+      <option value="2 Chronicles">2 Chronicles</option>
+      <option value="Ezra">Ezra</option>
+      <option value="Nehemiah">Nehemiah</option>
+      <option value="Esther">Esther</option>
+      <option value="Job">Job</option>
+      <option value="Psalms">Psalms</option>
+      <option value="Proverbs">Proverbs</option>
+      <option value="Ecclesiastes">Ecclesiastes</option>
+      <option value="Song of Solomon">Song of Solomon</option>
+      <option value="Isaiah">Isaiah</option>
+      <option value="Jeremiah">Jeremiah</option>
+      <option value="Lamentations">Lamentations</option>
+      <option value="Ezekiel">Ezekiel</option>
+      <option value="Daniel">Daniel</option>
+      <option value="Hosea">Hosea</option>
+      <option value="Joel">Joel</option>
+      <option value="Amos">Amos</option>
+      <option value="Obadiah">Obadiah</option>
+      <option value="Jonah">Jonah</option>
+      <option value="Micah">Micah</option>
+      <option value="Nahum">Nahum</option>
+      <option value="Habakkuk">Habakkuk</option>
+      <option value="Zephaniah">Zephaniah</option>
+      <option value="Haggai">Haggai</option>
+      <option value="Zechariah">Zechariah</option>
+      <option value="Malachi">Malachi</option>
+      <option value="Matthew">Matthew</option>
+      <option value="Mark">Mark</option>
+      <option value="Luke">Luke</option>
+      <option value="John">John</option>
+      <option value="Acts">Acts</option>
+      <option value="Romans">Romans</option>
+      <option value="1 Corinthians">1 Corinthians</option>
+      <option value="2 Corinthians">2 Corinthians</option>
+      <option value="Galatians">Galatians</option>
+      <option value="Ephesians">Ephesians</option>
+      <option value="Philippians">Philippians</option>
+      <option value="Colossians">Colossians</option>
+      <option value="1 Thessalonians">1 Thessalonians</option>
+      <option value="2 Thessalonians">2 Thessalonians</option>
+      <option value="1 Timothy">1 Timothy</option>
+      <option value="2 Timothy">2 Timothy</option>
+      <option value="Titus">Titus</option>
+      <option value="Philemon">Philemon</option>
+      <option value="Hebrews">Hebrews</option>
+      <option value="James">James</option>
+      <option value="1 Peter">1 Peter</option>
+      <option value="2 Peter">2 Peter</option>
+      <option value="1 John">1 John</option>
+      <option value="2 John">2 John</option>
+      <option value="3 John">3 John</option>
+      <option value="Jude">Jude</option>
+      <option value="Revelation">Revelation</option>
+    </select>
 
-      <div class="card">
-        <h3>Prayer Corner</h3>
-        <p>Spend time in prayer for your family, church and community.</p>
-      </div>
+    <label for="bibleChapter">Chapter number</label>
+    <input
+      id="bibleChapter"
+      type="number"
+      min="1"
+      max="150"
+      value="1"
+    >
+
+    <button type="button" class="navy" id="readBibleButton">
+      Read Chapter
+    </button>
+
+    <div
+      id="bibleReader"
+      class="notice"
+      style="margin-top:20px; white-space:normal"
+      aria-live="polite"
+    >
+      Choose a Bible book and chapter, then tap Read Chapter.
     </div>
+  </div>
+
+  <div class="card">
+    <h3>🌅 Daily Bible Reading</h3>
+
+    <p id="dailyBibleDate"></p>
+
+    <h4 id="dailyBibleReference">Psalm 23:1</h4>
+
+    <p id="dailyBibleVerse">
+      The LORD is my shepherd; I shall not want.
+    </p>
+
+    <p><strong>Today's reflection</strong></p>
+
+    <p id="dailyBibleReflection">
+      God cares for His people. Take a moment to pray and trust Him
+      with the challenges you face today.
+    </p>
+
+    <button type="button" id="newDailyBible" class="secondary">
+      Show Another Reading
+    </button>
   </div>
 </section>
 
@@ -1670,7 +1776,169 @@ onAuthStateChanged(auth, async user => {
 
     showMessage("authMessage", "Please sign in to continue.");
   }
-});
+});/* COMPLETE BIBLE READER */
+
+const bibleBook = document.getElementById("bibleBook");
+const bibleChapter = document.getElementById("bibleChapter");
+const readBibleButton = document.getElementById("readBibleButton");
+const bibleReader = document.getElementById("bibleReader");
+
+if (readBibleButton) {
+  readBibleButton.addEventListener("click", async () => {
+    const book = bibleBook.value;
+    const chapter = Number(bibleChapter.value);
+
+    if (!Number.isInteger(chapter) || chapter < 1 || chapter > 150) {
+      bibleReader.textContent = "Please enter a valid chapter number.";
+      return;
+    }
+
+    bibleReader.textContent = "Loading Bible chapter...";
+    readBibleButton.disabled = true;
+
+    try {
+      const reference = `${book} ${chapter}`;
+      const url =
+        "https://bible-api.com/" +
+        encodeURIComponent(reference) +
+        "?translation=kjv";
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (!response.ok || !data.verses || data.verses.length === 0) {
+        throw new Error("Chapter not found.");
+      }
+
+      const heading = document.createElement("h3");
+      heading.textContent = data.reference;
+
+      const version = document.createElement("p");
+      version.textContent = "King James Version (KJV)";
+
+      const versesContainer = document.createElement("div");
+
+      data.verses.forEach(verse => {
+        const paragraph = document.createElement("p");
+        const number = document.createElement("strong");
+
+        number.textContent = verse.verse + " ";
+        paragraph.appendChild(number);
+        paragraph.appendChild(
+          document.createTextNode(verse.text.trim())
+        );
+
+        versesContainer.appendChild(paragraph);
+      });
+
+      bibleReader.replaceChildren(
+        heading,
+        version,
+        versesContainer
+      );
+    } catch (error) {
+      bibleReader.textContent =
+        "The Bible chapter could not load. Please check your internet connection and try again.";
+    } finally {
+      readBibleButton.disabled = false;
+    }
+  });
+}
+
+
+/* DAILY BIBLE READINGS */
+
+const dailyReadings = [
+  {
+    reference: "Psalm 23:1",
+    verse: "The LORD is my shepherd; I shall not want.",
+    reflection:
+      "God cares for His people. Trust Him with the challenges you face today."
+  },
+  {
+    reference: "Proverbs 3:5",
+    verse: "Trust in the LORD with all thine heart; and lean not unto thine own understanding.",
+    reflection:
+      "Ask God to guide your decisions and help you trust His wisdom."
+  },
+  {
+    reference: "Matthew 5:9",
+    verse: "Blessed are the peacemakers: for they shall be called the children of God.",
+    reflection:
+      "Look for one way to bring peace and understanding to someone today."
+  },
+  {
+    reference: "Philippians 4:6",
+    verse: "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
+    reflection:
+      "Bring your worries to God in prayer and remember to give thanks."
+  },
+  {
+    reference: "John 3:16",
+    verse: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+    reflection:
+      "Remember God's love and consider how you can share that love with others."
+  },
+  {
+    reference: "Isaiah 41:10",
+    verse: "Fear thou not; for I am with thee: be not dismayed; for I am thy God.",
+    reflection:
+      "When you feel afraid, remember that you can seek strength and comfort in God."
+  },
+  {
+    reference: "Romans 12:12",
+    verse: "Rejoicing in hope; patient in tribulation; continuing instant in prayer;",
+    reflection:
+      "Keep hope alive, be patient during difficulties, and continue in prayer."
+  }
+];
+
+function showDailyBible(index) {
+  const reading = dailyReadings[index];
+
+  document.getElementById("dailyBibleReference").textContent =
+    reading.reference;
+
+  document.getElementById("dailyBibleVerse").textContent =
+    reading.verse;
+
+  document.getElementById("dailyBibleReflection").textContent =
+    reading.reflection;
+}
+
+const dailyDateElement = document.getElementById("dailyBibleDate");
+
+if (dailyDateElement) {
+  dailyDateElement.textContent =
+    "Date: " +
+    new Date().toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+  const dayIndex = Math.floor(
+    (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) /
+    86400000
+  ) % dailyReadings.length;
+
+  showDailyBible(dayIndex);
+}
+
+const newDailyBibleButton = document.getElementById("newDailyBible");
+
+if (newDailyBibleButton) {
+  newDailyBibleButton.addEventListener("click", () => {
+    const currentReference =
+      document.getElementById("dailyBibleReference").textContent;
+
+    const currentIndex = dailyReadings.findIndex(
+      reading => reading.reference === currentReference
+    );
+
+    showDailyBible((currentIndex + 1) % dailyReadings.length);
+  });
+}
 </script>
 
 </body>
