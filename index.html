@@ -1940,6 +1940,49 @@ if (newDailyBibleButton) {
   });
 }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const menuLinks = document.querySelectorAll('nav[aria-label="Main navigation"] a[href^="#"]');
+  const sections = document.querySelectorAll("section.section");
+  const hero = document.querySelector(".hero");
 
+  function showSection(id) {
+    sections.forEach(function (section) {
+      section.hidden = section.id !== id;
+    });
+
+    if (hero) {
+      hero.hidden = id !== "home";
+    }
+
+    if (id === "home") {
+      sections.forEach(function (section) {
+        section.hidden = true;
+      });
+    }
+
+    window.scrollTo(0, 0);
+  }
+
+  menuLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      const id = link.getAttribute("href").slice(1);
+      const target = document.getElementById(id);
+
+      if (target || id === "home") {
+        event.preventDefault();
+
+        if (id === "study") {
+          showSection("quiz");
+        } else {
+          showSection(id);
+        }
+      }
+    });
+  });
+
+  showSection("home");
+});
+</script>
 </body>
 </html>
