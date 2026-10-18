@@ -1217,7 +1217,7 @@ function showChatMessages(messages) {
   }
 
   container.innerHTML = messages.map(message => {
-    const name = escapeHTML(message.name || "Church member");
+    const name = escapeHTML(message.displayName || "Church member");
     const text = escapeHTML(message.text || "");
     let time = "";
 
@@ -1291,11 +1291,11 @@ if (byId("liveChatForm")) {
 
     try {
       await addDoc(collection(db, "churchChat"), {
-        uid: user.uid,
-        name: user.displayName || user.email || "Church member",
-        text: message,
-        createdAt: serverTimestamp()
-      });
+  uid: user.uid,
+  displayName: user.displayName || user.email || "Church member",
+  text: message,
+  createdAt: serverTimestamp()
+});
 
       input.value = "";
       showMessage("liveChatStatus", "Message sent.");
