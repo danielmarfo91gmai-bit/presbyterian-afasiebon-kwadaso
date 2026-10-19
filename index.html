@@ -1746,7 +1746,7 @@ function startChat() {
   const cloudName = "eyljkghx";
   const uploadPreset = "church_chat_uploads";
 
-  const isVideo = file.type === "video/mp4";
+  const isVideo = file.type.startsWith("video/");
   const resourceType = isVideo ? "video" : "image";
 
   const formData = new FormData();
@@ -1760,6 +1760,21 @@ function startChat() {
       method: "POST",
       body: formData
     }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok || !result.secure_url) {
+    throw new Error(
+      result.error?.message || "Cloudinary upload failed."
+    );
+  }
+
+  return {
+    mediaUrl: result.secure_url,
+    mediaType: isVideo ? "video" : "image"
+  };
+}
   );
 
   const result = await response.json();
