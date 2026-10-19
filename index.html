@@ -908,7 +908,14 @@ footer {
     >
       <p>Loading messages...</p>
     </div>
-
+<label for="chatMedia">📎 Share a photo or video</label>
+<input
+  id="chatMedia"
+  type="file"
+  accept="image/jpeg,image/png,image/webp,video/mp4"
+>
+<p class="small">Images: up to 5 MB. Videos: up to 10 MB.</p>
+<div id="chatMediaStatus" class="notice" role="status"></div>
     <form id="liveChatForm">
       <label for="liveChatInput">Your message</label>
 
@@ -1642,28 +1649,68 @@ function showChatMessages(messages) {
   const container = byId("liveChatMessages");
   if (!container) return;
 
+  container.replaceChildren();
+
   if (messages.length === 0) {
-    container.textContent = "No messages yet. Be the first to greet the congregation!";
+    container.textContent =
+      "No messages yet. Be the first to greet the congregation!";
     return;
   }
 
-  container.innerHTML = messages.map(message => {
-    const name = escapeHTML(message.displayName || "Church member");
-    const text = escapeHTML(message.text || "");
-    let time = "";
+  messages.forEach(message => {
+    const card = document.createElement("article");
+    card.style.cssText =
+      "padding:10px;margin-bottom:10px;background:white;" +
+      "border-radius:9px;border:1px solid #e1e7ef";
 
-    if (message.createdAt && message.createdAt.toDate) {
-      time = message.createdAt.toDate().toLocaleString();
+    const name = document.createElement("strong");
+    name.textContent = message.displayName || "Church member";
+    card.appendChild(name);
+
+    if (message.text) {
+      const text = document.createElement("p");
+      text.textContent = message.text;
+      text.style.cssText =
+        "white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0";
+      card.appendChild(text);
     }
 
-    return `
-      <article style="padding:10px;margin-bottom:10px;background:white;border-radius:9px;border:1px solid #e1e7ef">
-        <strong>${name}</strong>
-        <p style="white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0">${text}</p>
-        <small>${escapeHTML(time)}</small>
-      </article>
-    `;
-  }).join("");
+    const mediaUrl = message.mediaUrl || "";
+    const mediaType = message.mediaType || "";
+
+    if (
+      mediaUrl.startsWith("https://res.cloudinary.com/eyljkghx/") &&
+      mediaType === "image"
+    ) {
+      const image = document.createElement("img");
+      image.src = mediaUrl;
+      image.alt = "Photo shared in the church chat";
+      image.loading = "lazy";
+      image.style.cssText =
+        "display:block;max-width:100%;max-height:300px;" +
+        "object-fit:contain;border-radius:8px;margin-top:8px";
+      card.appendChild(image);
+    } else if (
+      mediaUrl.startsWith("https://res.cloudinary.com/eyljkghx/") &&
+      mediaType === "video"
+    ) {
+      const video = document.createElement("video");
+      video.src = mediaUrl;
+      video.controls = true;
+      video.preload = "metadata";
+      video.style.cssText =
+        "display:block;width:100%;max-height:300px;" +
+        "border-radius:8px;margin-top:8px";
+      card.appendChild(video);
+    }
+
+    const time = document.createElement("small");
+    if (message.createdAt && message.createdAt.toDate) {
+      time.textContent = message.createdAt.toDate().toLocaleString();
+    }
+    card.appendChild(time);
+    container.appendChild(card);
+  });
 
   container.scrollTop = container.scrollHeight;
 }
