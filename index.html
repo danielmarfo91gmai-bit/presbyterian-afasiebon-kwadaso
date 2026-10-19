@@ -1197,11 +1197,11 @@ footer {
           <tr>
             <td>1 November</td>
             <td>The Blessed Crowd: Called, Washed, and Witnessing</td>
-            <td>See original programme</td>
-            <td>See original programme</td>
-            <td>See original programme</td>
-            <td>See original programme</td>
-            <td>See original programme</td>
+            <td>Asempatrew</td>
+            <td>Asempatrew</td>
+            <td>Asempatrew</td>
+            <td>Asempatrew</td>
+            <td>Asempatrew</td>
           </tr>
 
           <tr>
@@ -1743,7 +1743,43 @@ function startChat() {
     showMessage("liveChatStatus", "Chat unavailable: " + friendlyError(error));
   });
 }
+const chatMediaInput = byId("chatMedia");
 
+if (chatMediaInput) {
+  chatMediaInput.addEventListener("change", () => {
+    const file = chatMediaInput.files[0];
+    const status = byId("chatMediaStatus");
+
+    if (!file || !status) return;
+
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "video/mp4"
+    ];
+
+    const maxSize = file.type === "video/mp4"
+      ? 10 * 1024 * 1024
+      : 5 * 1024 * 1024;
+
+    if (!allowedTypes.includes(file.type)) {
+      status.textContent = "Choose a JPG, PNG, WebP or MP4 file.";
+      chatMediaInput.value = "";
+      return;
+    }
+
+    if (file.size > maxSize) {
+      status.textContent = file.type === "video/mp4"
+        ? "Videos must be 10 MB or smaller."
+        : "Photos must be 5 MB or smaller.";
+      chatMediaInput.value = "";
+      return;
+    }
+
+    status.textContent = "File selected: " + file.name;
+  });
+}
 if (byId("liveChatForm")) {
   byId("liveChatForm").addEventListener("submit", async event => {
     event.preventDefault();
