@@ -1826,12 +1826,18 @@ if (byId("liveChatForm")) {
       return;
     }
 
-    if (!message) return;
+    const mediaInput = byId("chatMedia");
+const file = mediaInput?.files?.[0] || null;
 
-    if (message.length > 1000) {
-      showMessage("liveChatStatus", "Messages must be 1,000 characters or fewer.");
-      return;
-    }
+if (!message && !file) {
+  showMessage("liveChatStatus", "Write a message or select a photo/video.");
+  return;
+}
+
+if (message.length > 1000) {
+  showMessage("liveChatStatus", "Messages must be 1,000 characters or fewer.");
+  return;
+}
 
     button.disabled = true;
 
