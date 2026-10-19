@@ -1876,7 +1876,12 @@ await addDoc(collection(db, "churchChat"), chatMessage);
     mediaStatus.textContent = "";
   }
 
-  showMessage("liveChatStatus", "Message sent successfully!");
+showMessage(
+  "liveChatStatus",
+  file
+    ? "Message and picture sent successfully!"
+    : "Text message sent successfully!"
+);  
 } catch (error) {
   console.error("Church chat error:", error);
   showMessage(
