@@ -1871,10 +1871,14 @@ if (message.length > 1000) {
 
   showMessage("liveChatStatus", "Message sent successfully!");
 } catch (error) {
-      showMessage("liveChatStatus", "Message not sent: " + friendlyError(error));
-    } finally {
-      button.disabled = false;
-    }
+  console.error("Church chat error:", error);
+  showMessage(
+    "liveChatStatus",
+    "Message not sent: " + (error?.message || String(error))
+  );
+} finally {
+  button.disabled = false;
+}
   });
 }
 
