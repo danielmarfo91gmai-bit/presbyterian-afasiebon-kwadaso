@@ -1742,7 +1742,9 @@ function startChat() {
   }, error => {
     showMessage("liveChatStatus", "Chat unavailable: " + friendlyError(error));
   });
-}async function uploadChatMedia(file) {
+}}
+
+async function uploadChatMedia(file) {
   const cloudName = "eyljkghx";
   const uploadPreset = "church_chat_uploads";
 
@@ -1767,21 +1769,6 @@ function startChat() {
   if (!response.ok || !result.secure_url) {
     throw new Error(
       result.error?.message || "Cloudinary upload failed."
-    );
-  }
-
-  return {
-    mediaUrl: result.secure_url,
-    mediaType: isVideo ? "video" : "image"
-  };
-}
-  );
-
-  const result = await response.json();
-
-  if (!response.ok || !result.secure_url) {
-    throw new Error(
-      result.error?.message || "The file upload failed."
     );
   }
 
