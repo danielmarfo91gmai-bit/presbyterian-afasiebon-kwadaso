@@ -1849,14 +1849,19 @@ if (message.length > 1000) {
     media = await uploadChatMedia(file);
   }
 
-  await addDoc(collection(db, "churchChat"), {
-    uid: user.uid,
-    displayName: user.displayName || user.email || "Church member",
-    text: message,
-    mediaUrl: media.mediaUrl || "",
-    mediaType: media.mediaType || "",
-    createdAt: serverTimestamp()
-  });
+  const chatMessage = {
+  uid: user.uid,
+  displayName: user.displayName || user.email || "Church member",
+  text: message,
+  createdAt: serverTimestamp()
+};
+
+if (media.mediaUrl && media.mediaType) {
+  chatMessage.mediaUrl = media.mediaUrl;
+  chatMessage.mediaType = media.mediaType;
+}
+
+await addDoc(collection(db, "churchChat"), chatMessage);
 
   input.value = "";
 
@@ -1880,7 +1885,6 @@ if (message.length > 1000) {
   button.disabled = false;
 }
   });
-}
 }
 
 /* QUIZ SUPPORT */
