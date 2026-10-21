@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6b1d2a">
+<title>Asante Twi Bible | Afasiebon Church</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+header {
+  background: #6b1d2a;
+  color: white;
+  text-align: center;
+  padding: 18px 10px;
+}
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 14px;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+select, button {
+  padding: 12px;
+  border-radius: 7px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+}
+button {
+  background: #6b1d2a;
+  color: white;
+  border: 0;
+}
+iframe {
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 8px;
+}
+.note {
+  font-size: 13px;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>📖 Asante Twi Bible</h1>
+  <p>Presbyterian Church Afasiebon-Kwadaso</p>
+</header>
+
+<main>
+  <h2>Kenkan Onyankopɔn Asɛm</h2>
+
+  <div class="controls">
+    <select id="book" aria-label="Choose Bible book"></select>
+
+    <select id="chapter" aria-label="Choose chapter"></select>
+
+    <button id="openBible">Kenkan Bible</button>
+  </div>
+
+  <iframe
+    id="reader"
+    title="Asante Twi Bible reader"
+    src="https://ebible.org/twiasante/GEN01.htm">
+  </iframe>
+
+  <p class="note">
+    Bible text: Biblica® Open Asante Twi Contemporary Bible™.
+    Copyright © 1996, 2020 Biblica, Inc.
+    Original work available at www.biblica.com and open.bible.
+    Licensed under Creative Commons Attribution-ShareAlike 4.0.
+  </p>
+</main>
+
+<script>
+const books = [
+  ["GEN","1 Mose",50],["EXO","2 Mose",40],
+  ["LEV","3 Mose",27],["NUM","4 Mose",36],
+  ["DEU","5 Mose",34],["JOS","Yosua",24],
+  ["JDG","Atemmufoɔ",21],["RUT","Rut",4],
+  ["1SA","1 Samuel",31],["2SA","2 Samuel",24],
+  ["1KI","1 Ahemfo",22],["2KI","2 Ahemfo",25],
+  ["1CH","1 Berɛsosɛm",29],["2CH","2 Berɛsosɛm",36],
+  ["EZR","Ɛsra",10],["NEH","Nehemia",13],
+  ["EST","Ɛster",10],["JOB","Hiob",42],
+  ["PSA","Nnwom",150],["PRO","Mmɛbusɛm",31],
+  ["ECC","Ɔsɛnkafoɔ",12],["SNG","Nnwom Mu Dwom",8],
+  ["ISA","Yesaia",66],["JER","Yeremia",52],
+  ["LAM","Kwadwom",5],["EZK","Hesekiel",48],
+  ["DAN","Daniel",12],["HOS","Hosea",14],
+  ["JOL","Yoɛl",3],["AMO","Amos",9],
+  ["OBA","Obadia",1],["JON","Yona",4],
+  ["MIC","Mika",7],["NAM","Nahum",3],
+  ["HAB","Habakuk",3],["ZEP","Sefania",3],
+  ["HAG","Hagai",2],["ZEC","Sakaria",14],
+  ["MAL","Malaki",4],["MAT","Mateo",28],
+  ["MRK","Marko",16],["LUK","Luka",24],
+  ["JHN","Yohane",21],["ACT","Asomafoɔ",28],
+  ["ROM","Romafoɔ",16],["1CO","1 Korintofoɔ",16],
+  ["2CO","2 Korintofoɔ",13],["GAL","Galatifoɔ",6],
+  ["EPH","Efesofoɔ",6],["PHP","Filipifoɔ",4],
+  ["COL","Kolosefoɔ",4],["1TH","1 Tesalonika",5],
+  ["2TH","2 Tesalonika",3],["1TI","1 Timoteo",6],
+  ["2TI","2 Timoteo",4],["TIT","Tito",3],
+  ["PHM","Filemon",1],["HEB","Hebrifoɔ",13],
+  ["JAS","Yakobo",5],["1PE","1 Petro",5],
+  ["2PE","2 Petro",3],["1JN","1 Yohane",5],
+  ["2JN","2 Yohane",1],["3JN","3 Yohane",1],
+  ["JUD","Yuda",1],["REV","Adiyisɛm",22]
+];
+
+const bookSelect = document.getElementById("book");
+const chapterSelect = document.getElementById("chapter");
+const reader = document.getElementById("reader");
+
+books.forEach((book, index) => {
+  const option = document.createElement("option");
+  option.value = index;
+  option.textContent = book[1];
+  bookSelect.appendChild(option);
+});
+
+function updateChapters() {
+  const book = books[Number(bookSelect.value)];
+  chapterSelect.innerHTML = "";
+
+  for (let i = 1; i <= book[2]; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = "Ti " + i;
+    chapterSelect.appendChild(option);
+  }
+}
+
+function openChapter() {
+  const book = books[Number(bookSelect.value)];
+  const chapter = String(chapterSelect.value).padStart(2, "0");
+  reader.src = "https://ebible.org/twiasante/" +
+               book[0] + chapter + ".htm";
+}
+
+bookSelect.addEventListener("change", updateChapters);
+document.getElementById("openBible")
+  .addEventListener("click", openChapter);
+
+updateChapters();
+</script>
+</body>
+</html>
