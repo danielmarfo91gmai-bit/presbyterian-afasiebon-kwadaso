@@ -1042,6 +1042,10 @@ footer {
     <p id="announcementMessage" aria-live="polite"></p>
   </form>
 </div>
+<div id="announcementsList" aria-live="polite">
+  <p>Loading church announcements...</p>
+</div>
+    
     <div class="card">
       <h3>⛪ Sunday Worship Service</h3>
       <p>Join us for worship, prayer, praise, and the preaching of God's Word.</p>
@@ -2076,6 +2080,7 @@ onAuthStateChanged(auth, async user => {
     }
 
     startChat();
+    startAnnouncementsListener();
   } else {
     if (byId("loginScreen")) byId("loginScreen").hidden = false;
     if (byId("protectedSite")) byId("protectedSite").hidden = true;
@@ -2155,7 +2160,137 @@ if (readBibleButton) {
     }
   });
 }
+/* FIREBASE CHURCH ANNOUNCEMENTS */
 
+const announcementForm = document.getElementById("announcementForm");
+const announcementList = document.getElementById("announcementsList");
+
+function renderAnnouncements(items) {
+  if (!announcementList) return;
+
+  announcementList.replaceChildren();
+
+  if (items.length === 0) {
+    const empty = document.createElement("p");
+    empty.textContent = "No new announcements yet.";
+    announcementList.appendChild(empty);
+    return;
+  }
+
+  items.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title || "Church Announcement";
+    card.appendChild(title);
+
+    if (item.date) {
+      const date = document.createElement("p");
+      date.textContent = "Date: " + item.date;
+      card.appendChild(date);
+    }
+
+    if (item.location) {
+      const location = document.createElement("p");
+      location.textContent = "Location: " + item.location;
+      card.appendChild(location);
+    }
+
+    const details = document.createElement("p");
+    details.style.whiteSpace = "pre-wrap";
+    details.textContent = item.details || "";
+    card.appendChild(details);
+
+    const posted = document.createElement("p");
+    posted.textContent = "Posted by " + (item.createdBy || "Church leadership");
+    card.appendChild(posted);
+
+    announcementList.appendChild(card);
+  });
+}
+
+if (announcementForm) {
+  announcementForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const user = auth.currentUser;
+
+    if (!user) {
+      document.getElementById("announcementMessage").textContent =
+        "Please sign in first.";
+      return;
+    }
+
+    const title = document.getElementById("announcementTitle").value.trim();
+    const date = document.getElementById("announcementDate").value;
+    const location = document.getElementById("announcementLocation").value.trim();
+    const details = document.getElementById("announcementDetails").value.trim();
+    const message = document.getElementById("announcementMessage");
+    const button = announcementForm.querySelector('button[type="submit"]');
+
+    if (!title || !details) {
+      message.textContent = "Enter an announcement title and details.";
+      return;
+    }
+
+    button.disabled = true;
+    message.textContent = "Publishing announcement...";
+
+    try {
+      await addDoc(collection(db, "churchAnnouncements"), {
+        title,
+        date,
+        location,
+        details,
+        createdBy: user.displayName || user.email || "Church member",
+        uid: user.uid,
+        createdAt: serverTimestamp()
+      });
+
+      announcementForm.reset();
+      message.textContent = "Announcement published successfully!";
+    } catch (error) {
+      console.error("Announcement error:", error);
+      message.textContent =
+        "Could not publish. Please check the Firestore permissions.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
+let stopAnnouncementsListener = null;
+
+function startAnnouncementsListener() {
+  if (stopAnnouncementsListener) {
+    stopAnnouncementsListener();
+    stopAnnouncementsListener = null;
+  }
+
+  if (!auth.currentUser || !announcementList) return;
+
+  announcementList.textContent = "Loading announcements...";
+
+  const announcementsQuery = query(
+    collection(db, "churchAnnouncements"),
+    orderBy("createdAt", "desc"),
+    limit(50)
+  );
+
+  stopAnnouncementsListener = onSnapshot(
+    announcementsQuery,
+    snapshot => {
+      const items = snapshot.docs.map(document => document.data());
+      renderAnnouncements(items);
+    },
+    error => {
+      console.error("Announcements loading error:", error);
+      announcementList.textContent =
+        "Announcements could not load. Please check Firestore permissions.";
+    }
+  );
+}
 
 /* DAILY BIBLE READINGS */
 
