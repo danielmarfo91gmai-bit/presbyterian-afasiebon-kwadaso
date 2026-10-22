@@ -2243,8 +2243,9 @@ if (announcementForm) {
         date,
         location,
         details,
-        createdBy: user.displayName || user.email || "Church member",
-        uid: user.uid,
+        createdBy: user.uid,
+createdByName: user.displayName || user.email || "Church member",
+        
         createdAt: serverTimestamp()
       });
 
