@@ -1053,19 +1053,39 @@ footer {
       <p><strong>Time:</strong> Please confirm with church leadership.</p>
     </div><div class="card">
   <h3>🎵 Presbyterian Hymnal</h3>
-  <p>Read the Presbyterian Church of Ghana hymn books in Twi and English.</p>
+  <p>Read the Presbyterian Church of Ghana hymn books below.</p>
 
-  <a href="PHB_TWI.pdf" target="_blank" rel="noopener">
-    <button type="button">🎵 Open Twi Hymnal</button>
-  </a>
+  <button type="button"
+    onclick="document.getElementById('twiViewer').style.display='block';
+             document.getElementById('englishViewer').style.display='none';">
+    🎵 Open Twi Hymnal
+  </button>
 
-  <br><br>
+  <button type="button"
+    onclick="document.getElementById('englishViewer').style.display='block';
+             document.getElementById('twiViewer').style.display='none';">
+    🎵 Open English Hymnal
+  </button>
 
-  <a href="PHB_ENGLISH.pdf" target="_blank" rel="noopener">
-    <button type="button">🎵 Open English Hymnal</button>
-  </a>
+  <div id="twiViewer" style="display:none; margin-top:15px;">
+    <h4>Twi Hymnal</h4>
+    <iframe
+      src="PHB_TWI.pdf#toolbar=1"
+      title="Twi Presbyterian Hymnal"
+      style="width:100%; height:70vh; border:1px solid #ccc;"
+      loading="lazy">
+    </iframe>
+  </div>
 
-  <p><small>Use the PDF viewer's search feature to find a hymn by number or title.</small></p>
+  <div id="englishViewer" style="display:none; margin-top:15px;">
+    <h4>English Hymnal</h4>
+    <iframe
+      src="English-Hymnal.pdf#toolbar=1"
+      title="English Presbyterian Hymnal"
+      style="width:100%; height:70vh; border:1px solid #ccc;"
+      loading="lazy">
+    </iframe>
+  </div>
 </div>
 
     <div class="card">
