@@ -1470,24 +1470,7 @@ if (byId("googleButton")) {
 }
 
 
-/* EMAIL SIGN-IN */
-
-if (byId("emailForm")) {
-  byId("emailForm").addEventListener("submit", async event => {
-    event.preventDefault();
-
-    const email = byId("email").value.trim();
-    const password = byId("password").value;
-
-    showMessage("authMessage", "Signing in...");
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      showMessage("authMessage", friendlyError(error));
-    }
-  });
-}
+/* 
 
 
 /* CREATE AN ACCOUNT */
@@ -1798,12 +1781,6 @@ function showChatMessages(messages) {
       card.appendChild(actions);
     }
 
-    container.appendChild(card);
-  });
-
-  container.scrollTop = container.scrollHeight;
-}
-    card.appendChild(time);
     container.appendChild(card);
   });
 
