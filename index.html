@@ -847,7 +847,37 @@ footer {
     </button>
   </div>
 </section>
+<section id="study" class="section">
+  <div class="card">
+    <h2>📖 Bible Study</h2>
+    <p>Welcome to our Presbyterian Church of Ghana Bible Study page.</p>
+    <p>Read God's Word, reflect on its message, and grow in faith.</p>
 
+    <div class="card">
+      <h3>Lesson 1: Faith in God</h3>
+      <p><strong>Scripture:</strong> Hebrews 11:1</p>
+      <p>Faith means trusting God even when we cannot see what lies ahead.</p>
+      <h4>Questions to Think About</h4>
+      <ol>
+        <li>What does faith mean to you?</li>
+        <li>How can you show faith in your daily life?</li>
+        <li>What can we learn from the people of faith in the Bible?</li>
+      </ol>
+      <p><strong>Prayer:</strong> Lord, strengthen our faith and help us trust You every day. Amen.</p>
+    </div>
+
+    <div class="card">
+      <h3>Lesson 2: Loving Your Neighbour</h3>
+      <p><strong>Scripture:</strong> Mark 12:31</p>
+      <p>Jesus teaches us to love our neighbours as ourselves.</p>
+      <h4>Questions to Think About</h4>
+      <ol>
+        <li>Who is your neighbour?</li>
+        <li>How can you show kindness to someone this week?</li>
+      </ol>
+    </div>
+  </div>
+</section>
 <section id="quiz" class="section">
   <div class="card">
     <h2>📝 Bible Quiz</h2>
@@ -975,18 +1005,35 @@ footer {
 
 <section id="announcements" class="section">
   <div class="card">
-    <h2>📢 Church Announcements</h2>
+    <h2>📢 Church Announcements & Events</h2>
+    <p>Stay informed about worship services, prayer meetings, and activities at our church.</p>
 
     <div class="card">
-      <h3>Sunday Worship Service</h3>
-      <p>Join the congregation for worship, prayer and God's Word.</p>
-      <p><strong>Time:</strong> Please confirm the current service time with the church.</p>
+      <h3>⛪ Sunday Worship Service</h3>
+      <p>Join us for worship, prayer, praise, and the preaching of God's Word.</p>
+      <p><strong>Date:</strong> Every Sunday</p>
+      <p><strong>Time:</strong> Please confirm with church leadership.</p>
     </div>
 
     <div class="card">
-      <h3>Church Activities</h3>
-      <p>Members should check with church leadership for the latest activities and announcements.</p>
+      <h3>🙏 Prayer Meeting</h3>
+      <p>Come together in prayer, fellowship, and thanksgiving.</p>
+      <p><strong>Date and time:</strong> To be announced by church leadership.</p>
     </div>
+
+    <div class="card">
+      <h3>📖 Bible Study</h3>
+      <p>Study the Bible together and grow in God's Word.</p>
+      <p><strong>Date and time:</strong> To be announced by church leadership.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎉 Special Church Events</h3>
+      <p>Information about upcoming celebrations, conventions, and other church activities will appear here.</p>
+      <p><strong>Updates:</strong> Please check with church leadership for confirmed details.</p>
+    </div>
+
+    <p><em>May God bless our congregation and strengthen our fellowship.</em></p>
   </div>
 </section>
 
@@ -2203,7 +2250,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         if (id === "study") {
-          showSection("quiz");
+          showSection("study");
         } else {
           showSection(id);
         }
