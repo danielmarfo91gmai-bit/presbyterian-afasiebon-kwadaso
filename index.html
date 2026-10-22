@@ -1394,7 +1394,9 @@ import {
   orderBy,
   limit,
   onSnapshot,
-  serverTimestamp
+  serverTimestamp,
+  updateDoc,
+  deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 
@@ -1714,10 +1716,93 @@ function showChatMessages(messages) {
       card.appendChild(video);
     }
 
+    if (message.editedAt) {
+      const edited = document.createElement("small");
+      edited.textContent = " (edited)";
+      card.appendChild(edited);
+    }
+
     const time = document.createElement("small");
     if (message.createdAt && message.createdAt.toDate) {
-      time.textContent = message.createdAt.toDate().toLocaleString();
+      time.textContent = " • " +
+        message.createdAt.toDate().toLocaleString();
     }
+    card.appendChild(time);
+
+    // Members can manage only their own messages.
+    if (auth.currentUser && message.uid === auth.currentUser.uid) {
+      const actions = document.createElement("div");
+      actions.style.cssText =
+        "display:flex;gap:8px;flex-wrap:wrap;margin-top:10px";
+
+      const editButton = document.createElement("button");
+      editButton.type = "button";
+      editButton.textContent = "✏️ Edit";
+      editButton.addEventListener("click", async () => {
+        const newText = prompt("Edit your message:", message.text || "");
+        if (newText === null) return;
+        if (!newText.trim()) {
+          alert("Your message cannot be empty.");
+          return;
+        }
+        if (newText.trim().length > 1000) {
+          alert("Messages must be 1,000 characters or fewer.");
+          return;
+        }
+        try {
+          await updateDoc(doc(db, "churchChat", message.id), {
+            text: newText.trim(),
+            editedAt: serverTimestamp()
+          });
+        } catch (error) {
+          alert("Could not edit message: " + friendlyError(error));
+        }
+      });
+
+      const deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.textContent = "🗑️ Delete";
+      deleteButton.addEventListener("click", async () => {
+        if (!confirm("Delete this message permanently?")) return;
+        try {
+          await deleteDoc(doc(db, "churchChat", message.id));
+        } catch (error) {
+          alert("Could not delete message: " + friendlyError(error));
+        }
+      });
+
+      const repostButton = document.createElement("button");
+      repostButton.type = "button";
+      repostButton.textContent = "🔁 Repost";
+      repostButton.addEventListener("click", async () => {
+        try {
+          await addDoc(collection(db, "churchChat"), {
+            uid: auth.currentUser.uid,
+            displayName:
+              auth.currentUser.displayName ||
+              auth.currentUser.email ||
+              "Church member",
+            text: message.text || "",
+            ...(message.mediaUrl ? {
+              mediaUrl: message.mediaUrl,
+              mediaType: message.mediaType
+            } : {}),
+            createdAt: serverTimestamp()
+          });
+        } catch (error) {
+          alert("Could not repost message: " + friendlyError(error));
+        }
+      });
+
+      actions.append(editButton, deleteButton, repostButton);
+      card.appendChild(actions);
+    }
+
+    container.appendChild(card);
+  });
+
+  container.scrollTop = container.scrollHeight;
+}
     card.appendChild(time);
     container.appendChild(card);
   });
