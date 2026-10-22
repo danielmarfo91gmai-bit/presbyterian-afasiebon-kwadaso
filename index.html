@@ -1007,7 +1007,41 @@ footer {
   <div class="card">
     <h2>📢 Church Announcements & Events</h2>
     <p>Stay informed about worship services, prayer meetings, and activities at our church.</p>
+<div class="card" id="addAnnouncement">
+  <h3>📝 Add a Church Announcement</h3>
+  <p>Church leaders can use this form to prepare new announcements.</p>
 
+  <form id="announcementForm">
+    <label for="announcementTitle">Announcement Title</label>
+    <input
+      type="text"
+      id="announcementTitle"
+      placeholder="Enter announcement title"
+      required
+    >
+
+    <label for="announcementDate">Event Date</label>
+    <input type="date" id="announcementDate">
+
+    <label for="announcementLocation">Location</label>
+    <input
+      type="text"
+      id="announcementLocation"
+      placeholder="Enter event location"
+    >
+
+    <label for="announcementDetails">Announcement Details</label>
+    <textarea
+      id="announcementDetails"
+      rows="4"
+      placeholder="Write the announcement here"
+      required
+    ></textarea>
+
+    <button type="submit">Publish Announcement</button>
+    <p id="announcementMessage" aria-live="polite"></p>
+  </form>
+</div>
     <div class="card">
       <h3>⛪ Sunday Worship Service</h3>
       <p>Join us for worship, prayer, praise, and the preaching of God's Word.</p>
