@@ -2149,7 +2149,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  const requestedSection = new URLSearchParams(window.location.search).get("section");
+
+if (requestedSection === "bible") {
+  showSection("bible");
+} else {
   showSection("home");
+}
 });
 </script><script>
 if ("serviceWorker" in navigator) {
