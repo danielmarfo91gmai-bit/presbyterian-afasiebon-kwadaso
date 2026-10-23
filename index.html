@@ -1068,24 +1068,33 @@ footer {
   </button>
 
   <div id="twiViewer" style="display:none; margin-top:15px;">
-    <h4>Twi Hymnal</h4>
-    <iframe
-      src="PHB_TWI.pdf#toolbar=1"
-      title="Twi Presbyterian Hymnal"
-      style="width:100%; height:70vh; border:1px solid #ccc;"
-      loading="lazy">
-    </iframe>
-  </div>
+  <h4>Twi Hymnal</h4>
 
-  <div id="englishViewer" style="display:none; margin-top:15px;">
-    <h4>English Hymnal</h4>
-    <iframe
-      src="English-Hymnal.pdf#toolbar=1"
-      title="English Presbyterian Hymnal"
-      style="width:100%; height:70vh; border:1px solid #ccc;"
-      loading="lazy">
-    </iframe>
-  </div>
+  <object
+    data="PHB_TWI.pdf#toolbar=1"
+    type="application/pdf"
+    width="100%"
+    height="600"
+    style="border:1px solid #ccc;">
+
+    <p>Your browser cannot display the PDF here.</p>
+    <a href="PHB_TWI.pdf">Open Twi Hymnal</a>
+  </object>
+</div>
+
+<div id="englishViewer" style="display:none; margin-top:15px;">
+  <h4>English Hymnal</h4>
+
+  <object
+    data="English-Hymnal.pdf#toolbar=1"
+    type="application/pdf"
+    width="100%"
+    height="600"
+    style="border:1px solid #ccc;">
+
+    <p>Your browser cannot display the PDF here.</p>
+    <a href="English-Hymnal.pdf">Open English Hymnal</a>
+  </object>
 </div>
 
     <div class="card">
