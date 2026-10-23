@@ -1056,16 +1056,16 @@ footer {
   <p>Read the Presbyterian Church of Ghana hymn books below.</p>
 
   <button type="button"
-    onclick="document.getElementById('twiViewer').style.display='block';
-             document.getElementById('englishViewer').style.display='none';">
-    🎵 Open Twi Hymnal
-  </button>
+  onclick="document.getElementById('englishViewer').style.display='none';
+           openHymnalReader('PHB_TWI.pdf','Twi Hymnal','twiViewer');">
+  🎵 Open Twi Hymnal
+</button>
 
   <button type="button"
-    onclick="document.getElementById('englishViewer').style.display='block';
-             document.getElementById('twiViewer').style.display='none';">
-    🎵 Open English Hymnal
-  </button>
+  onclick="document.getElementById('twiViewer').style.display='none';
+           openHymnalReader('English-Hymnal.pdf','English Hymnal','englishViewer');">
+  🎵 Open English Hymnal
+</button>
 
   <div id="twiViewer" style="display:none; margin-top:15px;">
   <h4>Twi Hymnal</h4>
