@@ -1087,7 +1087,7 @@ footer {
         <div style="font-size:42px;">🇬🇭</div>
         <h3>🎵 Twi Hymnal</h3>
         <p>Read Presbyterian hymns in Twi.</p>
-        <button type="button" onclick="document.getElementById('englishViewer').style.display='none';openHymnalReader('PHB_TWI.pdf','Twi Hymnal','twiViewer');">Open Twi Hymnal</button>
+        <button type="button" onclick="document.getElementById('englishViewer').style.display='none';openHymnalReader('PHB_TWI.pdf','Twi Hymnal','twiViewer');document.getElementById('twiViewer').style.display='block';">Open Twi Hymnal</button>
         <div id="twiViewer" style="display:none;margin-top:15px;"></div>
       </div>
 
@@ -1095,7 +1095,7 @@ footer {
         <div style="font-size:42px;">📖</div>
         <h3>🎵 English Hymnal</h3>
         <p>Read Presbyterian hymns in English.</p>
-        <button type="button" onclick="document.getElementById('twiViewer').style.display='none';openHymnalReader('English-Hymnal.pdf','English Hymnal','englishViewer');">Open English Hymnal</button>
+        <button type="button" onclick="document.getElementById('twiViewer').style.display='none';openHymnalReader('English-Hymnal.pdf','English Hymnal','englishViewer');document.getElementById('englishViewer').style.display='block';">Open English Hymnal</button>
         <div id="englishViewer" style="display:none;margin-top:15px;"></div>
       </div>
 
