@@ -598,6 +598,40 @@ footer {
   <a class="btn secondary" href="#profile">My Member Profile</a>
 </div>
 
+<!-- HOME SOCIAL FEED -->
+<section id="home-feed" class="section">
+  <h2 class="section-title">🏠 Church Community Feed</h2>
+  <p>Share God's word, church news, photos and videos with our church family.</p>
+
+  <div class="card">
+    <h3>Create a Post</h3>
+
+    <label for="post-text">What's happening?</label>
+    <textarea id="post-text"
+      placeholder="Write something for your church family..."
+      style="width:100%;min-height:100px;padding:12px;border-radius:10px;margin:10px 0;"></textarea>
+
+    <label for="post-image">📷 Choose a photo</label>
+    <input id="post-image" type="file" accept="image/*"
+      style="display:block;margin:10px 0;">
+
+    <label for="post-video">🎥 Choose a video</label>
+    <input id="post-video" type="file" accept="video/*"
+      style="display:block;margin:10px 0;">
+
+    <button class="btn" type="button" onclick="publishChurchPost()">
+      📤 Publish Post
+    </button>
+
+    <p id="post-message" aria-live="polite"></p>
+  </div>
+
+  <div id="church-posts">
+    <h3>Recent Posts</h3>
+    <p>Church family posts will appear here.</p>
+  </div>
+</section>
+
 <section id="about" class="section">
   <h2 class="section-title">About Our Congregation</h2>
 
@@ -2663,9 +2697,116 @@ container.querySelector(".zoom-out").onclick = function () {
       status.textContent =
         "The hymn book could not load. Check the PDF filename and internet connection.";
       console.error(error);
-    }
+    }1411
   };
 })();
+// ===== CHURCH HOME FEED =====
+function publishChurchPost() {
+  const textInput = document.getElementById("post-text");
+  const imageInput = document.getElementById("post-image");
+  const videoInput = document.getElementById("post-video");
+  const feed = document.getElementById("church-posts");
+  const message = document.getElementById("post-message");
+
+  const text = textInput.value.trim();
+  const image = imageInput.files[0];
+  const video = videoInput.files[0];
+
+  if (!text && !image && !video) {
+    message.textContent = "Please write a message or choose a photo/video.";
+    return;
+  }
+
+  const post = document.createElement("article");
+  post.className = "card";
+  post.style.marginTop = "20px";
+
+  const author = document.createElement("h3");
+  author.textContent = "Church Member";
+  post.appendChild(author);
+
+  if (text) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    post.appendChild(paragraph);
+  }
+
+  function showMedia(file, type) {
+    const url = URL.createObjectURL(file);
+    const media = type === "image"
+      ? document.createElement("img")
+      : document.createElement("video");
+
+    media.src = url;
+    media.controls = type === "video";
+    media.style.width = "100%";
+    media.style.maxHeight = "450px";
+    media.style.objectFit = "contain";
+    media.style.borderRadius = "12px";
+    media.style.marginTop = "10px";
+
+    post.appendChild(media);
+  }
+
+  if (image) showMedia(image, "image");
+  if (video) showMedia(video, "video");
+
+  const actions = document.createElement("div");
+  actions.style.marginTop = "12px";
+
+  const likeButton = document.createElement("button");
+  likeButton.className = "btn secondary";
+  likeButton.textContent = "❤️ Like 0";
+  let likes = 0;
+
+  likeButton.onclick = function () {
+    likes++;
+    likeButton.textContent = "❤️ Like " + likes;
+  };
+
+  actions.appendChild(likeButton);
+
+  const commentInput = document.createElement("input");
+  commentInput.type = "text";
+  commentInput.placeholder = "Write a comment...";
+  commentInput.style.width = "100%";
+  commentInput.style.padding = "10px";
+  commentInput.style.marginTop = "12px";
+
+  const commentButton = document.createElement("button");
+  commentButton.className = "btn";
+  commentButton.textContent = "💬 Comment";
+  commentButton.style.marginTop = "8px";
+
+  const comments = document.createElement("div");
+
+  commentButton.onclick = function () {
+    const commentText = commentInput.value.trim();
+    if (!commentText) return;
+
+    const comment = document.createElement("p");
+    comment.textContent = "💬 " + commentText;
+    comments.appendChild(comment);
+    commentInput.value = "";
+  };
+
+  actions.appendChild(commentInput);
+  actions.appendChild(commentButton);
+  actions.appendChild(comments);
+  post.appendChild(actions);
+
+  const heading = feed.querySelector("h3");
+  if (heading) {
+    feed.insertBefore(post, heading.nextSibling);
+  } else {
+    feed.prepend(post);
+  }
+
+  textInput.value = "";
+  imageInput.value = "";
+  videoInput.value = "";
+  message.textContent = "Your post has been added to this page!";
+}  
 </script>
 </body>
 </html>
