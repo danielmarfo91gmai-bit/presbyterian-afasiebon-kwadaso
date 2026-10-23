@@ -2563,10 +2563,9 @@ if ("serviceWorker" in navigator) {
 
         try {
           const pdfPage = await pdf.getPage(page);
-          const viewport = pdfPage.getViewport({ scale: zoom });
-          const maxWidth = Math.max(250, container.clientWidth - 32);
-const fitScale = maxWidth / viewport.width;
-
+          const baseViewport = pdfPage.getViewport({ scale: 1 });
+const maxWidth = Math.max(250, container.clientWidth - 32);
+const fitScale = maxWidth / baseViewport.width;
 const finalViewport = pdfPage.getViewport({
   scale: fitScale * zoom
 });
