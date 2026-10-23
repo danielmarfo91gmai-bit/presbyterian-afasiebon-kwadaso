@@ -1077,31 +1077,73 @@ footer {
 </section>
 <!-- PRESBYTERIAN HYMNAL PAGE -->
 <section id="presbyterian-hymnal" class="section">
-  <div class="card">
+  <div class="card" style="width:100%;max-width:100%;box-sizing:border-box;">
     <h2>🎵 Presbyterian Hymnal</h2>
-    <p>Worship God through hymns in Twi and English.</p>
+    <p>Choose a hymnal to read. Only your selected hymnal will appear.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;">
+    <div id="hymnalChoices"
+         style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;">
 
       <div style="background:#f0f5ff;border:2px solid #183568;border-radius:12px;padding:18px;text-align:center;">
         <div style="font-size:42px;">🇬🇭</div>
         <h3>🎵 Twi Hymnal</h3>
         <p>Read Presbyterian hymns in Twi.</p>
-        <button type="button" onclick="document.getElementById('englishViewer').style.display='none';openHymnalReader('PHB_TWI.pdf','Twi Hymnal','twiViewer');document.getElementById('twiViewer').style.display='block';">Open Twi Hymnal</button>
-        <div id="twiViewer" style="display:none;margin-top:15px;"></div>
+        <button type="button" onclick="showSelectedHymnal('twi')">
+          Open Twi Hymnal
+        </button>
       </div>
 
       <div style="background:#fff8e7;border:2px solid #b58a22;border-radius:12px;padding:18px;text-align:center;">
         <div style="font-size:42px;">📖</div>
         <h3>🎵 English Hymnal</h3>
         <p>Read Presbyterian hymns in English.</p>
-        <button type="button" onclick="document.getElementById('twiViewer').style.display='none';openHymnalReader('English-Hymnal.pdf','English Hymnal','englishViewer');document.getElementById('englishViewer').style.display='block';">Open English Hymnal</button>
-        <div id="englishViewer" style="display:none;margin-top:15px;"></div>
+        <button type="button" onclick="showSelectedHymnal('english')">
+          Open English Hymnal
+        </button>
       </div>
+    </div>
 
+    <div id="hymnalReadingArea" style="display:none;width:100%;margin-top:20px;">
+      <button type="button" onclick="closeSelectedHymnal()">
+        ← Back to Hymnal Choices
+      </button>
+
+      <div id="twiViewer" style="display:none;width:100%;margin-top:15px;"></div>
+      <div id="englishViewer" style="display:none;width:100%;margin-top:15px;"></div>
     </div>
   </div>
 </section>
+
+<script>
+function showSelectedHymnal(language) {
+  const choices = document.getElementById("hymnalChoices");
+  const area = document.getElementById("hymnalReadingArea");
+  const twi = document.getElementById("twiViewer");
+  const english = document.getElementById("englishViewer");
+
+  choices.style.display = "none";
+  area.style.display = "block";
+
+  if (language === "twi") {
+    english.style.display = "none";
+    twi.style.display = "block";
+    openHymnalReader("PHB_TWI.pdf", "Twi Hymnal", "twiViewer");
+  } else {
+    twi.style.display = "none";
+    english.style.display = "block";
+    openHymnalReader("English-Hymnal.pdf", "English Hymnal", "englishViewer");
+  }
+
+  window.scrollTo(0, 0);
+}
+
+function closeSelectedHymnal() {
+  document.getElementById("hymnalReadingArea").style.display = "none";
+  document.getElementById("hymnalChoices").style.display = "grid";
+  document.getElementById("twiViewer").style.display = "none";
+  document.getElementById("englishViewer").style.display = "none";
+}
+</script>
 <section id="sermons" class="section">
   <div class="card">
     <h2>🎙️ Sermons and Messages</h2>
