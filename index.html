@@ -2572,9 +2572,10 @@ const finalViewport = pdfPage.getViewport({
 
           canvas.width = Math.floor(finalViewport.width);
           canvas.height = Math.floor(finalViewport.height);
-          canvas.style.width = finalViewport.width + "px";
-          canvas.style.height = finalViewport.height + "px";
-
+canvas.style.width = finalViewport.width + "px";
+canvas.style.height = finalViewport.height + "px";
+canvas.style.display = "block";
+canvas.style.maxWidth = "none";
           await pdfPage.render({
             canvasContext: ctx,
             viewport: finalViewport
