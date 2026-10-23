@@ -2493,5 +2493,153 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+  <!-- Presbyterian Hymnal PDF Reader -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<style>
+.hymnal-reader {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172554;
+}
+
+.hymnal-reader button {
+  padding: 10px 14px;
+  margin: 4px;
+  border: none;
+  border-radius: 6px;
+  background: #172554;
+  color: white;
+}
+
+.hymnal-reader canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 12px auto;
+  border: 1px solid #ddd;
+}
+
+.hymnal-status {
+  overflow-wrap: anywhere;
+}
+</style>
+
+<script>
+(function () {
+  if (!window.pdfjsLib) {
+    console.error("PDF reader library could not load.");
+    return;
+  }
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  window.openHymnalReader = async function (file, title, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.style.display = "block";
+    container.innerHTML = `
+      <div class="hymnal-reader">
+        <h4>${title}</h4>
+        <p class="hymnal-status">Loading hymn book...</p>
+        <div class="hymnal-controls" style="display:none">
+          <button type="button" class="previous">Previous</button>
+          <span class="page-number"></span>
+          <button type="button" class="next">Next</button>
+          <button type="button" class="zoom-in">Zoom +</button>
+          <button type="button" class="zoom-out">Zoom −</button>
+        </div>
+        <canvas></canvas>
+      </div>`;
+
+    const status = container.querySelector(".hymnal-status");
+    const controls = container.querySelector(".hymnal-controls");
+    const canvas = container.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    const pageNumber = container.querySelector(".page-number");
+
+    let pdf;
+    let page = 1;
+    let zoom = 1;
+    let rendering = false;
+
+    try {
+      const task = pdfjsLib.getDocument(file);
+      pdf = await task.promise;
+      status.textContent = "";
+      controls.style.display = "block";
+
+      async function renderPage() {
+        if (rendering) return;
+        rendering = true;
+
+        try {
+          const pdfPage = await pdf.getPage(page);
+          const viewport = pdfPage.getViewport({ scale: zoom });
+          const maxWidth = Math.max(250, container.clientWidth - 32);
+          const scale = Math.min(1.5, maxWidth / viewport.width);
+          const finalViewport = pdfPage.getViewport({
+            scale: zoom * scale
+          });
+
+          canvas.width = Math.floor(finalViewport.width);
+          canvas.height = Math.floor(finalViewport.height);
+          canvas.style.width = finalViewport.width + "px";
+          canvas.style.height = finalViewport.height + "px";
+
+          await pdfPage.render({
+            canvasContext: ctx,
+            viewport: finalViewport
+          }).promise;
+
+          pageNumber.textContent = `Page ${page} of ${pdf.numPages}`;
+          container.querySelector(".previous").disabled = page <= 1;
+          container.querySelector(".next").disabled = page >= pdf.numPages;
+        } catch (error) {
+          status.textContent = "Could not display this page. Please try again.";
+          console.error(error);
+        } finally {
+          rendering = false;
+        }
+      }
+
+      container.querySelector(".previous").onclick = function () {
+        if (page > 1) {
+          page--;
+          renderPage();
+        }
+      };
+
+      container.querySelector(".next").onclick = function () {
+        if (page < pdf.numPages) {
+          page++;
+          renderPage();
+        }
+      };
+
+      container.querySelector(".zoom-in").onclick = function () {
+        zoom = Math.min(2, zoom + 0.2);
+        renderPage();
+      };
+
+      container.querySelector(".zoom-out").onclick = function () {
+        zoom = Math.max(0.6, zoom - 0.2);
+        renderPage();
+      };
+
+      await renderPage();
+    } catch (error) {
+      status.textContent =
+        "The hymn book could not load. Check the PDF filename and internet connection.";
+      console.error(error);
+    }
+  };
+})();
+</script>
 </body>
 </html>
