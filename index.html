@@ -823,7 +823,39 @@ footer {
       Choose a Bible book and chapter, then tap Read Chapter.
     </div>
   </div>
+<!-- PRESBYTERIAN HYMNAL SECTION -->
+<div class="card" id="presbyterian-hymnal">
+  <h3>🎵 Presbyterian Hymnal</h3>
+  <p>Worship God through hymns in Twi and English.</p>
 
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px;">
+
+    <!-- TWI HYMNAL -->
+    <div style="background:#f0f5ff; border:2px solid #183568; border-radius:12px; padding:15px; text-align:center;">
+      <div style="font-size:36px;">🇬🇭</div>
+      <h4>Twi Hymnal</h4>
+      <p>Read Presbyterian hymns in Twi.</p>
+      <button type="button"
+        onclick="document.getElementById('englishViewer').style.display='none'; openHymnalReader('PHB_TWI.pdf','Twi Hymnal','twiViewer');">
+        🎵 Open Twi Hymnal
+      </button>
+      <div id="twiViewer" style="display:none; margin-top:15px;"></div>
+    </div>
+
+    <!-- ENGLISH HYMNAL -->
+    <div style="background:#fff8e7; border:2px solid #b58a22; border-radius:12px; padding:15px; text-align:center;">
+      <div style="font-size:36px;">📖</div>
+      <h4>English Hymnal</h4>
+      <p>Read Presbyterian hymns in English.</p>
+      <button type="button"
+        onclick="document.getElementById('twiViewer').style.display='none'; openHymnalReader('English-Hymnal.pdf','English Hymnal','englishViewer');">
+        🎵 Open English Hymnal
+      </button>
+      <div id="englishViewer" style="display:none; margin-top:15px;"></div>
+    </div>
+
+  </div>
+</div>
   <div class="card">
     <h3>🌅 Daily Bible Reading</h3>
 
