@@ -2865,6 +2865,38 @@ function publishChurchPost() {
       initials.hidden = true;
     }
   });
+    const coverUpload = document.getElementById("profileCoverUpload");
+  const coverPreview = document.getElementById("profileCoverPreview");
+
+  let coverPreviewURL = null;
+
+  if (coverUpload && coverPreview) {
+    coverUpload.addEventListener("change", function () {
+      const file = coverUpload.files && coverUpload.files[0];
+
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        alert("Please choose an image for your cover photo.");
+        coverUpload.value = "";
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert("Please choose a cover photo smaller than 5 MB.");
+        coverUpload.value = "";
+        return;
+      }
+
+      if (coverPreviewURL) {
+        URL.revokeObjectURL(coverPreviewURL);
+      }
+
+      coverPreviewURL = URL.createObjectURL(file);
+      coverPreview.src = coverPreviewURL;
+      coverPreview.hidden = false;
+    });
+  }
 })();
 </script>
 </body>
