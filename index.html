@@ -2913,5 +2913,40 @@ function publishChurchPost() {
   }
 })();
 </script>
+  <script>
+function showProfileTab(tab, button) {
+  const content = document.getElementById("profileTabContent");
+
+  if (!content) return;
+
+  document.querySelectorAll(".profile-tab").forEach(function (item) {
+    item.classList.remove("active");
+  });
+
+  if (button) {
+    button.classList.add("active");
+  }
+
+  if (tab === "posts") {
+    content.innerHTML = "<h4>📝 Posts</h4><p>Your church profile posts will appear here.</p>";
+  } else if (tab === "photos") {
+    content.innerHTML = "<h4>📸 Photos</h4><p>Your profile photos will appear here.</p>";
+  } else if (tab === "about") {
+    const bio = document.getElementById("profileBioSummary");
+    const phone = document.getElementById("profilePhoneSummary");
+
+    content.innerHTML = "<h4>👤 About</h4>";
+
+    const bioText = document.createElement("p");
+    bioText.textContent = "Biography: " + (bio ? bio.textContent : "");
+
+    const phoneText = document.createElement("p");
+    phoneText.textContent = "Phone: " + (phone ? phone.textContent : "");
+
+    content.appendChild(bioText);
+    content.appendChild(phoneText);
+  }
+}
+</script>
 </body>
 </html>
