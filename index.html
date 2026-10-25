@@ -2808,5 +2808,46 @@ function publishChurchPost() {
   message.textContent = "Your post has been added to this page!";
 }  
 </script>
+  <script>
+(function () {
+  const upload = document.getElementById("profilePhotoUpload");
+  const preview = document.getElementById("profilePhotoPreview");
+  const initials = document.getElementById("profileInitials");
+
+  if (!upload || !preview) return;
+
+  let photoPreviewURL = null;
+
+  upload.addEventListener("change", function () {
+    const file = upload.files && upload.files[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("Please choose an image.");
+      upload.value = "";
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Please choose a photo smaller than 5 MB.");
+      upload.value = "";
+      return;
+    }
+
+    if (photoPreviewURL) {
+      URL.revokeObjectURL(photoPreviewURL);
+    }
+
+    photoPreviewURL = URL.createObjectURL(file);
+    preview.src = photoPreviewURL;
+    preview.hidden = false;
+
+    if (initials) {
+      initials.hidden = true;
+    }
+  });
+})();
+</script>
 </body>
 </html>
