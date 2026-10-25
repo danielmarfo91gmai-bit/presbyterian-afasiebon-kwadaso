@@ -701,6 +701,20 @@ footer {
       >
 
       <h3 id="profileDisplayName">Church Member</h3>
+      <div class="profile-tabs">
+  <button type="button" class="profile-tab active"
+    onclick="showProfileTab('posts', this)">📝 Posts</button>
+
+  <button type="button" class="profile-tab"
+    onclick="showProfileTab('photos', this)">📸 Photos</button>
+
+  <button type="button" class="profile-tab"
+    onclick="showProfileTab('about', this)">👤 About</button>
+</div>
+
+<div id="profileTabContent" class="profile-tab-content">
+  <p>Welcome to your church profile!</p>
+</div>
       <p id="profileEmail">Your signed-in email will appear here.</p>
       <p id="profilePhoneSummary"></p>
       <p id="profileBioSummary">Add a short introduction to your profile.</p>
