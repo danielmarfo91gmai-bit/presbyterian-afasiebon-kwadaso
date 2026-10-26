@@ -2834,18 +2834,7 @@ function publishChurchPost() {
     feed.prepend(post);
   }
 
-  textInput.value = "";
-  imageInput.value = "";
-  videoInput.value = "";
-  message.textContent = "Your post has been added to this page!";
-}  
-</script>
-  <script>
-(function () {
-  const upload = document.getElementById("profilePhotoUpload");
-  const preview = document.getElementById("profilePhotoPreview");
-  const initials = document.getElementById("profileInitials");
-
+  
   if (!upload || !preview) return;
 
   let photoPreviewURL = null;
